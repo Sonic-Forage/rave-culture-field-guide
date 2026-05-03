@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1a0a"/>
+      <stop offset="100%" style="stop-color:#0a0a2e"/>
+    </linearGradient>
+    <filter id="neon3"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg3)"/>
+  
+  <!-- Timeline -->
+  <line x1="50" y1="200" x2="750" y2="200" stroke="#00ff88" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Era markers -->
+  <g filter="url(#neon3)">
+    <circle cx="100" cy="200" r="8" fill="#ff1493"/>
+    <text x="100" y="230" text-anchor="middle" font-family="monospace" font-size="10" fill="#ff1493">1970</text>
+    <text x="100" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#00ffff">DISCO</text>
+    
+    <circle cx="220" cy="200" r="8" fill="#ff1493"/>
+    <text x="220" y="230" text-anchor="middle" font-family="monospace" font-size="10" fill="#ff1493">1985</text>
+    <text x="220" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#00ffff">HOUSE</text>
+    
+    <circle cx="340" cy="200" r="8" fill="#ff1493"/>
+    <text x="340" y="230" text-anchor="middle" font-family="monospace" font-size="10" fill="#ff1493">1990</text>
+    <text x="340" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#00ffff">RAVE</text>
+    
+    <circle cx="460" cy="200" r="8" fill="#ff1493"/>
+    <text x="460" y="230" text-anchor="middle" font-family="monospace" font-size="10" fill="#ff1493">2000</text>
+    <text x="460" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#00ffff">EDM</text>
+    
+    <circle cx="580" cy="200" r="8" fill="#ff1493"/>
+    <text x="580" y="230" text-anchor="middle" font-family="monospace" font-size="10" fill="#ff1493">2025</text>
+    <text x="580" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#00ffff">AI DJ</text>
+    
+    <circle cx="700" cy="200" r="12" fill="#00ffff" filter="url(#neon3)"/>
+    <text x="700" y="230" text-anchor="middle" font-family="monospace" font-size="10" fill="#00ffff">2045</text>
+    <text x="700" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff1493">ECLIPSE</text>
+  </g>
+  
+  <!-- Genre bubbles -->
+  <g opacity="0.3">
+    <circle cx="150" cy="120" r="30" fill="none" stroke="#ff1493" stroke-width="1"/>
+    <circle cx="280" cy="300" r="25" fill="none" stroke="#00ffff" stroke-width="1"/>
+    <circle cx="500" cy="100" r="35" fill="none" stroke="#00ff88" stroke-width="1"/>
+    <circle cx="650" cy="320" r="28" fill="none" stroke="#ff1493" stroke-width="1"/>
+  </g>
+  
+  <text x="400" y="60" text-anchor="middle" font-family="monospace" font-size="24" fill="#00ff88" filter="url(#neon3)">RAVE CULTURE FIELD GUIDE</text>
+  <text x="400" y="85" text-anchor="middle" font-family="monospace" font-size="12" fill="#ff1493">From Disco to Eclipse 2045 — The Full Uncensored History</text>
+  
+  <text x="400" y="380" text-anchor="middle" font-family="monospace" font-size="10" fill="#00ff88" opacity="0.5">PLUR • Harm Reduction • Community Care</text>
+</svg>

@@ -1,4 +1,6 @@
-# Rave Culture Field Guide
+# 📖 Rave Culture Field Guide
+
+![Rave Culture Field Guide](docs/assets/hero.svg)
 
 ![Rave culture timeline hero](assets/images/rave-culture-timeline-hero.png)
 
