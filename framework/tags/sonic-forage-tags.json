@@ -1,0 +1,75 @@
+{
+  "schema": "sonic_forage.tags.v1",
+  "status": "public_safe_open_source",
+  "updated_utc": "2026-05-03T08:57:04Z",
+  "categories": {
+    "community": [
+      "city-chapter",
+      "community-review",
+      "elder-review-wanted",
+      "source-needed",
+      "oral-history",
+      "public-safe"
+    ],
+    "culture": [
+      "plur",
+      "kandi",
+      "warehouse",
+      "club-culture",
+      "free-party",
+      "festival-culture",
+      "underground",
+      "harm-reduction"
+    ],
+    "dj": [
+      "beatmatching",
+      "phrasing",
+      "eq",
+      "transition",
+      "warm-up-set",
+      "bpm",
+      "genre-map",
+      "practice-drill"
+    ],
+    "policy_safety": [
+      "rave-act",
+      "policy-context",
+      "consent",
+      "hearing-protection",
+      "hydration",
+      "naloxone-context",
+      "drug-checking-context",
+      "accessibility"
+    ],
+    "framework": [
+      "prompt-pack",
+      "payload",
+      "workflow-contract",
+      "unicode-ui",
+      "endpoint-swappable",
+      "voice-ready",
+      "comfyui-ready"
+    ],
+    "gates": [
+      "closed_until_human_yes",
+      "no-private-scene-exposure",
+      "no-public-posting-without-approval",
+      "no-gpu-without-approval",
+      "no-secrets"
+    ]
+  },
+  "recommended_github_labels": [
+    "city-chapter",
+    "community",
+    "correction",
+    "sources",
+    "dj-guide",
+    "glossary",
+    "documentation",
+    "prompt-pack",
+    "payload",
+    "workflow-contract",
+    "unicode-ui",
+    "closed-gate"
+  ]
+}

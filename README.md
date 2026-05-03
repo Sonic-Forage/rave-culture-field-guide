@@ -19,6 +19,10 @@ This repo is built as a fun educational launch artifact: part history zine, part
 - `CONTRIBUTING.md` — community contribution guide and review standards.
 - `.github/ISSUE_TEMPLATE/` — starter issue forms for city chapters, corrections/sources, and DJ guide improvements.
 - `docs/community/CITY_CHAPTER_TEMPLATE.md` — reusable city/regional chapter template.
+- `docs/framework/OPEN_SOURCE_BUILDER_FRAMEWORK.md` — open-source builder framework for community prompts, payloads, tags, UI, and workflow contracts.
+- `framework/` — reusable prompt packs, JSON payload examples, workflow registry, tags, and Unicode UI blocks.
+- `docs/integrations/` — dry-run endpoint contracts for ComfyUI and synthetic voice/TTS workflows.
+- `.env.example` — closed-by-default local endpoint switches; no real secrets.
 - `data/timeline.json` — machine-readable timeline data.
 - `scripts/verify.py` — lightweight repo verifier.
 
@@ -41,6 +45,20 @@ This project is set up for public-safe community growth under the **Sonic-Forage
 - City chapter template: `docs/community/CITY_CHAPTER_TEMPLATE.md`
 
 Use the templates to propose source-backed corrections, city chapters, DJ terminology improvements, or safer-event notes without exposing private scene details.
+
+## Open-source builder framework
+
+Community builders can also use this repo as a reusable framework:
+
+- Prompt packs: `framework/prompts/`
+- JSON payload examples: `framework/payloads/`
+- Shared tags: `framework/tags/sonic-forage-tags.json`
+- Badass copy/paste Unicode UI blocks: `framework/ui/UNICODE_RAVE_UI_KIT.md`
+- Workflow registry: `framework/workflows/workflow-registry.json`
+- ComfyUI endpoint contract: `docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md`
+- Synthetic voice/TTS workflow contract: `docs/integrations/VOICE_WORKFLOW_CONTRACT.md`
+
+Everything is closed-by-default: endpoint URLs live in local env vars, generation/posting/upload/payment/outreach/GPU lanes require human approval, and `.env.example` contains placeholders only.
 
 ## Core idea
 

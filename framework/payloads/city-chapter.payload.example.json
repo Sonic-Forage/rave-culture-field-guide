@@ -1,0 +1,20 @@
+{
+  "type": "sonic_forage.city_chapter_request.v1",
+  "tags": [
+    "city-chapter",
+    "sources",
+    "public-safe",
+    "elder-review-wanted"
+  ],
+  "city": "<CITY_OR_REGION>",
+  "status": "draft",
+  "public_sources": [],
+  "oral_memory_notes": [],
+  "forbidden_content": [
+    "private addresses",
+    "active underground locations",
+    "personal contact info",
+    "unverified allegations"
+  ],
+  "output_path": "docs/community/cities/<CITY>.md"
+}

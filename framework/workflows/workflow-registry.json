@@ -1,0 +1,42 @@
+{
+  "schema": "sonic_forage.workflow_registry.v1",
+  "status": "dry_run_templates_only",
+  "workflows": [
+    {
+      "id": "rave-history-hero-textfree",
+      "type": "image",
+      "backend": "comfyui_or_gpt_image_2",
+      "payload": "framework/payloads/comfyui-dry-run.payload.example.json",
+      "tags": [
+        "comfyui-ready",
+        "prompt-pack",
+        "text-free-hero"
+      ],
+      "approval": "closed_until_human_yes"
+    },
+    {
+      "id": "sonic-forage-host-voice",
+      "type": "tts",
+      "backend": "omni_voice_or_local_tts",
+      "payload": "framework/payloads/voice-workflow.payload.example.json",
+      "tags": [
+        "voice-ready",
+        "synthetic-only",
+        "endpoint-swappable"
+      ],
+      "approval": "closed_until_human_yes"
+    },
+    {
+      "id": "city-chapter-builder",
+      "type": "docs",
+      "backend": "github_issue_or_agent",
+      "payload": "framework/payloads/city-chapter.payload.example.json",
+      "tags": [
+        "city-chapter",
+        "community",
+        "sources"
+      ],
+      "approval": "open_for_public_safe_contribution"
+    }
+  ]
+}

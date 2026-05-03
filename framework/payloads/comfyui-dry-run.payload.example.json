@@ -1,0 +1,23 @@
+{
+  "type": "sonic_forage.comfyui_workflow_request.v1",
+  "status": "dry_run_closed_until_human_yes",
+  "workflow_id": "rave-history-hero-textfree",
+  "endpoint_env": "COMFYUI_BASE_URL",
+  "post_prompt_enabled": false,
+  "requires_human_approval": true,
+  "input": {
+    "prompt": "<PROMPT>",
+    "negative_prompt": "text, watermark, logo, private scene details",
+    "width": 1024,
+    "height": 1024,
+    "seed": 12345,
+    "reference_images": []
+  },
+  "risky_flags": {
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "uploads_private_media": false,
+    "records_audio": false,
+    "publishes_stream": false
+  }
+}

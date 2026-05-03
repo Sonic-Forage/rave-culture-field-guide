@@ -1,0 +1,21 @@
+{
+  "type": "sonic_forage.voice_workflow_request.v1",
+  "status": "synthetic_voice_draft_closed_until_human_yes",
+  "voice_backend": "omni_voice_or_local_tts",
+  "endpoint_env": "VOICE_TTS_BASE_URL",
+  "voice_instruct": "male, young adult, moderate pitch, american accent",
+  "text": "Welcome to Sonic-Forage. Build the next chapter together.",
+  "requires_human_approval": true,
+  "blocked_without_approval": [
+    "clone real voice",
+    "upload private voice samples",
+    "publish audio",
+    "start paid endpoint"
+  ],
+  "risky_flags": {
+    "uses_real_person_likeness": false,
+    "uploads_private_media": false,
+    "starts_paid_api": false,
+    "records_audio": false
+  }
+}

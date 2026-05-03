@@ -22,6 +22,18 @@ required = [
     '.github/ISSUE_TEMPLATE/correction_or_source.yml',
     '.github/ISSUE_TEMPLATE/dj_term_or_guide_improvement.yml',
     'docs/community/CITY_CHAPTER_TEMPLATE.md',
+    'docs/framework/OPEN_SOURCE_BUILDER_FRAMEWORK.md',
+    'framework/ui/UNICODE_RAVE_UI_KIT.md',
+    'framework/tags/sonic-forage-tags.json',
+    'framework/prompts/github-community-prompts.md',
+    'framework/prompts/ai-media-prompts.md',
+    'framework/payloads/city-chapter.payload.example.json',
+    'framework/payloads/comfyui-dry-run.payload.example.json',
+    'framework/payloads/voice-workflow.payload.example.json',
+    'framework/workflows/workflow-registry.json',
+    'docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md',
+    'docs/integrations/VOICE_WORKFLOW_CONTRACT.md',
+    '.env.example',
 ]
 errors = []
 for rel in required:
