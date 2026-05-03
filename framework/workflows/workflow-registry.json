@@ -78,7 +78,7 @@
       "approval": "closed_until_human_yes"
     },
     {
-      "id": "workflow-endpoint-task-dry-run",
+      "id": "workflow-endpoint-job-dryrun",
       "type": "workflow_endpoint_contract",
       "backend": "local_issue_or_agent_fixture",
       "payload": "framework/payloads/workflow-endpoint-task.payload.example.json",
@@ -88,6 +88,20 @@
         "github-builder",
         "closed-gate",
         "unicode-ui"
+      ],
+      "approval": "closed_until_human_yes"
+    },
+    {
+      "id": "sonic-voice-persona-prompt-pack",
+      "type": "synthetic_voice_persona_prompt_pack",
+      "backend": "local_prompt_pack_or_operator_armed_tts",
+      "payload": "framework/payloads/sonic-voice-persona.payload.example.json",
+      "tags": [
+        "voice-ready",
+        "prompt-pack",
+        "synthetic-only",
+        "closed-gate",
+        "endpoint-swappable"
       ],
       "approval": "closed_until_human_yes"
     }

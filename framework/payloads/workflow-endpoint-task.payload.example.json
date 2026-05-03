@@ -18,7 +18,7 @@
     "mutates_cron": false
   },
   "task_template": {
-    "id": "workflow-endpoint-task-dry-run",
+    "id": "workflow-endpoint-job-dryrun",
     "title": "Add one Sonic-Forage endpoint workflow contract",
     "lane": "comfyui_visual_workflows | synthetic_voice_tts | realtime_command_router | github_builder_prompts",
     "default_state": "closed_until_human_yes",

@@ -1,0 +1,71 @@
+{
+  "schema": "sonic_forage.voice_persona_prompt_pack.v1",
+  "status": "voice_persona_prompt_pack_closed_until_human_yes",
+  "requires_human_approval": true,
+  "endpoint_env_vars": {
+    "VOICE_TTS_BASE_URL": "[REDACTED]",
+    "VOICE_TTS_API_TOKEN": "[REDACTED]",
+    "VOICE_TTS_ENABLE_GENERATION": "false",
+    "VOICE_CLONING_ENABLED": "false",
+    "VOICE_UPLOAD_PRIVATE_MEDIA": "false"
+  },
+  "flags": {
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "publishes_stream": false,
+    "records_audio": false,
+    "uploads_private_media": false,
+    "downloads_models": false,
+    "starts_training": false,
+    "uses_real_person_likeness": false,
+    "clones_voice": false,
+    "mutates_cron": false
+  },
+  "personas": [
+    {
+      "id": "warehouse-lantern-host",
+      "display_name": "Warehouse Lantern Host",
+      "voice_instruct": "female, young adult, moderate pitch, american accent",
+      "allowed_use": "local demo narration and docs-only readouts for source-backed open-source builder tasks",
+      "sample_line": "Sonic-Forage is lit up, but every launch gate stays closed until human yes.",
+      "blocked_without_approval": [
+        "call live TTS endpoint",
+        "publish generated audio",
+        "upload private voice samples",
+        "imitate real people"
+      ]
+    },
+    {
+      "id": "sub-bass-archivist",
+      "display_name": "Sub-Bass Archivist",
+      "voice_instruct": "male, middle-aged, low pitch, british accent",
+      "allowed_use": "source-path proof narration, launch claim caveats, and repo-local verifier readouts",
+      "sample_line": "Proof first: every claim maps to a file, command, or canonical Sonic-Forage URL.",
+      "blocked_without_approval": [
+        "record microphone input",
+        "clone or imitate a named artist",
+        "start paid voice API",
+        "post clips publicly"
+      ]
+    },
+    {
+      "id": "neon-care-dispatch",
+      "display_name": "Neon Care Dispatch",
+      "voice_instruct": "female, elderly, high pitch, whisper",
+      "allowed_use": "public-safe safety and consent reminders that avoid medical/legal promises",
+      "sample_line": "Hydrate, protect your hearing, respect consent, and check official sources before claiming facts.",
+      "blocked_without_approval": [
+        "give medical or legal advice",
+        "expose private scene details",
+        "upload crowd audio",
+        "send outreach"
+      ]
+    }
+  ],
+  "proof_paths": [
+    "framework/prompts/voice-persona-prompt-pack.md",
+    "framework/payloads/sonic-voice-persona.payload.example.json",
+    "docs/integrations/VOICE_WORKFLOW_CONTRACT.md",
+    ".env.example"
+  ]
+}

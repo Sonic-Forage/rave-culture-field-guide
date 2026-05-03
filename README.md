@@ -50,8 +50,8 @@ Use the templates to propose source-backed corrections, city chapters, DJ termin
 
 Community builders can also use this repo as a reusable framework:
 
-- Prompt packs: `framework/prompts/`, including `framework/prompts/workflow-endpoint-prompts.md` for ComfyUI, synthetic voice/TTS, realtime router, and GitHub-builder endpoint contract tasks.
-- JSON payload examples: `framework/payloads/` including `framework/payloads/github-builder-task.payload.example.json` for one-increment public-safe GitHub/agent work and `framework/payloads/workflow-endpoint-task.payload.example.json` for closed-gate workflow endpoint tasks.
+- Prompt packs: `framework/prompts/`, including `framework/prompts/workflow-endpoint-prompts.md` for ComfyUI, synthetic voice/TTS, realtime router, and GitHub-builder endpoint contract tasks, plus `framework/prompts/voice-persona-prompt-pack.md` for synthetic-only host/interlude voice copy.
+- JSON payload examples: `framework/payloads/` including `framework/payloads/github-builder-task.payload.example.json` for one-increment public-safe GitHub/agent work, `framework/payloads/workflow-endpoint-task.payload.example.json` for closed-gate workflow endpoint tasks, and `framework/payloads/sonic-voice-persona.payload.example.json` for generic-descriptor voice personas.
 - Shared tags: `framework/tags/sonic-forage-tags.json`
 - Badass copy/paste Unicode UI blocks: `framework/ui/UNICODE_RAVE_UI_KIT.md`
 - Endpoint status-card UI blocks: `framework/ui/ENDPOINT_STATUS_CARDS.md`

@@ -10,8 +10,10 @@ required = [
  'framework/prompts/github-community-prompts.md',
  'framework/prompts/ai-media-prompts.md',
  'framework/prompts/workflow-endpoint-prompts.md',
+ 'framework/prompts/voice-persona-prompt-pack.md',
  'framework/payloads/city-chapter.payload.example.json',
  'framework/payloads/workflow-endpoint-task.payload.example.json',
+ 'framework/payloads/sonic-voice-persona.payload.example.json',
  'framework/payloads/comfyui-dry-run.payload.example.json',
  'framework/payloads/voice-workflow.payload.example.json',
  'framework/payloads/realtime-command-router.payload.example.json',
@@ -69,6 +71,26 @@ for needle in ['COMFYUI_BASE_URL','VOICE_TTS_BASE_URL','REALTIME_ROUTER_BASE_URL
 workflow_prompts=(ROOT/'framework/prompts/workflow-endpoint-prompts.md').read_text(errors='replace')
 for needle in ['workflow_endpoint_prompts_closed_until_human_yes','COMFYUI_ENABLE_PROMPT=false','VOICE_TTS_ENABLE_GENERATION=false','REALTIME_ROUTER_ENABLE_SHELL=false','requires_human_approval=true']:
     if needle not in workflow_prompts: errors.append(f'workflow endpoint prompt pack missing {needle}')
+voice_persona_prompt=(ROOT/'framework/prompts/voice-persona-prompt-pack.md').read_text(errors='replace')
+for needle in ['voice_persona_prompt_pack_closed_until_human_yes','VOICE_TTS_ENABLE_GENERATION=false','VOICE_TTS_BASE_URL=[REDACTED]','requires_human_approval=true','Do not imitate named artists']:
+    if needle not in voice_persona_prompt: errors.append(f'voice persona prompt pack missing {needle}')
+voice_persona=json.loads((ROOT/'framework/payloads/sonic-voice-persona.payload.example.json').read_text())
+if voice_persona.get('requires_human_approval') is not True:
+    errors.append('voice persona payload requires_human_approval must be true')
+for flag, value in voice_persona.get('flags', {}).items():
+    if value is not False:
+        errors.append(f'voice persona risky flag must be false: {flag}')
+if len(voice_persona.get('personas', [])) < 3:
+    errors.append('voice persona payload needs at least 3 personas')
+for persona in voice_persona.get('personas', []):
+    if not persona.get('voice_instruct') or any(name in persona.get('voice_instruct','').lower() for name in ['artist', 'dj ', 'celebrity', 'clone']):
+        errors.append(f"voice persona has unsafe voice_instruct: {persona.get('id')}")
+    if len(persona.get('blocked_without_approval', [])) < 4:
+        errors.append(f"voice persona blocked list too short: {persona.get('id')}")
+for proof in voice_persona.get('proof_paths', []):
+    if not (ROOT/proof).exists(): errors.append(f'voice persona proof path missing: {proof}')
+for needle in ['VOICE_TTS_BASE_URL','VOICE_TTS_API_TOKEN','[REDACTED]','VOICE_TTS_ENABLE_GENERATION']:
+    if needle not in json.dumps(voice_persona): errors.append(f'voice persona payload missing {needle}')
 status_cards=json.loads((ROOT/'framework/payloads/endpoint-status-card.payload.example.json').read_text())
 if status_cards.get('requires_human_approval') is not True:
     errors.append('endpoint status-card payload requires_human_approval must be true')

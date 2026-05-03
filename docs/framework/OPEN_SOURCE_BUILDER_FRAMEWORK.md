@@ -36,14 +36,15 @@ framework/
 ## Builder quick start
 
 1. Copy a prompt from `framework/prompts/`; use `framework/prompts/workflow-endpoint-prompts.md` when adding ComfyUI, synthetic voice/TTS, realtime router, or GitHub-builder workflow endpoint contracts.
-2. Pick tags from `framework/tags/sonic-forage-tags.json`.
-3. Use a payload from `framework/payloads/`; use `framework/payloads/workflow-endpoint-task.payload.example.json` for one closed-gate endpoint task envelope.
-4. For endpoint/status-card displays, copy `framework/ui/ENDPOINT_STATUS_CARDS.md` and `framework/payloads/endpoint-status-card.payload.example.json`; keep every card display-only until a human opens exactly one lane.
-5. Choose an endpoint lane from `framework/workflows/endpoint-switchboard.example.json` and keep endpoint URLs in environment variables, not git.
-6. For GitHub/community-agent work, start with `framework/payloads/github-builder-task.payload.example.json`; it constrains agents to one public-safe contribution and keeps posting/outreach/payment/GPU/media gates closed.
-7. For realtime prototypes, start with `framework/payloads/realtime-command-router.payload.example.json` plus `docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md`; keep microphone, WebSocket, OSC, and shell switches disabled until a human approves exactly one lane.
-8. Leave all switches such as `COMFYUI_ENABLE_PROMPT=false`, `VOICE_TTS_ENABLE_GENERATION=false`, `REALTIME_ROUTER_ENABLE_SHELL=false`, and posting/upload/payment gates closed until an awake operator says yes.
-9. Run:
+2. For synthetic host/interlude voice copy, use `framework/prompts/voice-persona-prompt-pack.md` plus `framework/payloads/sonic-voice-persona.payload.example.json`; keep `voice_instruct` generic and never imitate a real person.
+3. Pick tags from `framework/tags/sonic-forage-tags.json`.
+4. Use a payload from `framework/payloads/`; use `framework/payloads/workflow-endpoint-task.payload.example.json` for one closed-gate endpoint task envelope.
+5. For endpoint/status-card displays, copy `framework/ui/ENDPOINT_STATUS_CARDS.md` and `framework/payloads/endpoint-status-card.payload.example.json`; keep every card display-only until a human opens exactly one lane.
+6. Choose an endpoint lane from `framework/workflows/endpoint-switchboard.example.json` and keep endpoint URLs in environment variables, not git.
+7. For GitHub/community-agent work, start with `framework/payloads/github-builder-task.payload.example.json`; it constrains agents to one public-safe contribution and keeps posting/outreach/payment/GPU/media gates closed.
+8. For realtime prototypes, start with `framework/payloads/realtime-command-router.payload.example.json` plus `docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md`; keep microphone, WebSocket, OSC, and shell switches disabled until a human approves exactly one lane.
+9. Leave all switches such as `COMFYUI_ENABLE_PROMPT=false`, `VOICE_TTS_ENABLE_GENERATION=false`, `REALTIME_ROUTER_ENABLE_SHELL=false`, and posting/upload/payment gates closed until an awake operator says yes.
+10. Run:
 
 ```bash
 python3 scripts/verify.py
