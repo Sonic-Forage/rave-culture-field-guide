@@ -1,0 +1,29 @@
+name: DJ term or guide improvement
+description: Improve DJ terminology, beginner learning path, gear notes, or practice drills.
+title: "DJ guide: <term / section>"
+labels: ["dj-guide", "glossary", "documentation"]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: Term or section
+      placeholder: "phrasing, EQ, cue point, backspin, breakbeat, warm-up set..."
+    validations:
+      required: true
+  - type: textarea
+    id: beginner_explanation
+    attributes:
+      label: Beginner-friendly explanation
+      description: Explain it like someone is learning to DJ for the first time.
+    validations:
+      required: true
+  - type: textarea
+    id: practice
+    attributes:
+      label: Practice drill or example
+      description: Optional drill, scenario, or set-building tip.
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources / references
+      description: Manuals, DJ education resources, interviews, or other public references.

@@ -1,0 +1,36 @@
+name: Correction or source request
+description: Fix a historical claim, source, legal/policy note, or cultural context.
+title: "Correction/source: <short topic>"
+labels: ["correction", "sources", "documentation"]
+body:
+  - type: textarea
+    id: current_text
+    attributes:
+      label: Current text or claim
+      description: Quote the line or section that needs correction.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_fix
+    attributes:
+      label: Proposed correction
+      description: What should it say instead?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Public links, books, official policy pages, interviews, archives, or notes that support the correction.
+    validations:
+      required: true
+  - type: dropdown
+    id: sensitivity
+    attributes:
+      label: Sensitivity level
+      options:
+        - Low — typo/wording/source cleanup
+        - Medium — cultural attribution or disputed history
+        - High — legal, safety, harassment, private-scene, or personal-risk context
+    validations:
+      required: true

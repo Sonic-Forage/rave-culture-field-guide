@@ -16,6 +16,9 @@ This repo is built as a fun educational launch artifact: part history zine, part
 - `docs/dj/HOW_TO_DJ.md` — beginner guide to gear, beatmatching, phrasing, EQ, transitions, set-building, and practice drills.
 - `docs/dj/DJ_TERMINOLOGY.md` — glossary of DJ/rave/music terms.
 - `docs/sources/SOURCES.md` — source list and reading path.
+- `CONTRIBUTING.md` — community contribution guide and review standards.
+- `.github/ISSUE_TEMPLATE/` — starter issue forms for city chapters, corrections/sources, and DJ guide improvements.
+- `docs/community/CITY_CHAPTER_TEMPLATE.md` — reusable city/regional chapter template.
 - `data/timeline.json` — machine-readable timeline data.
 - `scripts/verify.py` — lightweight repo verifier.
 
@@ -26,6 +29,18 @@ This repo is built as a fun educational launch artifact: part history zine, part
 3. Read `docs/legal-and-safety/RAVE_ACT_AND_POLICY.md` before making claims about the RAVE Act.
 4. Read `docs/dj/HOW_TO_DJ.md` and practice the drills.
 5. Use `docs/dj/DJ_TERMINOLOGY.md` as a decoder ring.
+6. Want to help? Read `CONTRIBUTING.md`, then use an issue template or the city chapter template.
+
+## Community starter kit
+
+This project is set up for public-safe community growth under the **Sonic-Forage** organization:
+
+- Canonical repo: https://github.com/Sonic-Forage/rave-culture-field-guide
+- Contribution guide: `CONTRIBUTING.md`
+- Issue templates: `.github/ISSUE_TEMPLATE/`
+- City chapter template: `docs/community/CITY_CHAPTER_TEMPLATE.md`
+
+Use the templates to propose source-backed corrections, city chapters, DJ terminology improvements, or safer-event notes without exposing private scene details.
 
 ## Core idea
 

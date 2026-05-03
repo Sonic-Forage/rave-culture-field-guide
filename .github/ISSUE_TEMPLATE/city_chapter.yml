@@ -1,0 +1,48 @@
+name: City chapter proposal
+description: Propose or draft a local rave / dance-music culture chapter.
+title: "City chapter: <city / region>"
+labels: ["city-chapter", "community", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for public-safe local scene history, not private event intel. Do not post private addresses, private crew details, personal contact info, or active underground locations.
+  - type: input
+    id: city
+    attributes:
+      label: City / region
+      description: What place should this chapter cover?
+      placeholder: "Detroit, Chicago, London, Los Angeles, Berlin, ..."
+    validations:
+      required: true
+  - type: textarea
+    id: overview
+    attributes:
+      label: Short scene overview
+      description: What should a newcomer understand first?
+      placeholder: "A few paragraphs about the sound, culture, roots, and evolution."
+    validations:
+      required: true
+  - type: textarea
+    id: public_safe_landmarks
+    attributes:
+      label: Public-safe landmarks / archives / sources
+      description: Public venues, archives, interviews, docs, articles, radio archives, books, etc.
+      placeholder: "Links and citations."
+    validations:
+      required: true
+  - type: textarea
+    id: sounds
+    attributes:
+      label: Sounds, genres, DJs, labels, radio, flyers, zines
+      description: Include only public-safe names and context.
+  - type: textarea
+    id: safety
+    attributes:
+      label: Community care / safety notes
+      description: Accessibility, harm reduction, consent, safer-space practices, local legal context.
+  - type: textarea
+    id: open_questions
+    attributes:
+      label: Open questions / elder review wanted
+      description: What needs more sourcing or local review?

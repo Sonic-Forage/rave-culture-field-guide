@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Sonic-Forage project home
+    url: https://github.com/Sonic-Forage/rave-culture-field-guide
+    about: Canonical home for this field guide and community starter kit.
+  - name: Live autonomous launch proof deck
+    url: https://sonic-forage.github.io/rave-autonomous-launch-game-plan/
+    about: See the companion proof deck explaining how this repo was launched.

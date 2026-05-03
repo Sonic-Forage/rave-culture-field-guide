@@ -16,6 +16,12 @@ required = [
     'docs/sources/SOURCES.md',
     'data/timeline.json',
     'assets/images/rave-culture-timeline-hero.png',
+    'CONTRIBUTING.md',
+    '.github/ISSUE_TEMPLATE/config.yml',
+    '.github/ISSUE_TEMPLATE/city_chapter.yml',
+    '.github/ISSUE_TEMPLATE/correction_or_source.yml',
+    '.github/ISSUE_TEMPLATE/dj_term_or_guide_improvement.yml',
+    'docs/community/CITY_CHAPTER_TEMPLATE.md',
 ]
 errors = []
 for rel in required:
