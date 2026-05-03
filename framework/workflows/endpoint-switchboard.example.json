@@ -1,0 +1,96 @@
+{
+  "schema": "sonic_forage.endpoint_switchboard.v1",
+  "status": "endpoint_switchboard_closed_until_human_yes",
+  "purpose": "Open-source builders can swap local/remote workflow endpoints by changing environment variables, while every risky lane stays disabled by default.",
+  "operator_rule": "Do not paste real endpoint URLs, tokens, private media paths, or credentials into git. Copy this file locally, set env vars in .env, and open exactly one lane only after human approval.",
+  "global_flags": {
+    "requires_human_approval": true,
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "publishes_stream": false,
+    "records_audio": false,
+    "uploads_private_media": false,
+    "downloads_models": false,
+    "starts_training": false,
+    "submits_public_post": false,
+    "creates_payment_link": false,
+    "sends_outreach": false,
+    "mutates_cron": false
+  },
+  "lanes": [
+    {
+      "id": "comfyui_visual_workflows",
+      "label": "ComfyUI visual workflow endpoint",
+      "status": "closed_until_human_yes",
+      "env_vars": {
+        "COMFYUI_BASE_URL": "http://127.0.0.1:8188",
+        "COMFYUI_ENABLE_PROMPT": "false",
+        "COMFYUI_WORKFLOW_REGISTRY": "framework/workflows/workflow-registry.json",
+        "COMFYUI_API_TOKEN": "[REDACTED]"
+      },
+      "read_only_preflight": [
+        "curl -fsS \"$COMFYUI_BASE_URL/system_stats\"",
+        "curl -fsS \"$COMFYUI_BASE_URL/object_info\" >/tmp/sonic_forage_comfyui_object_info.json",
+        "curl -fsS \"$COMFYUI_BASE_URL/queue\""
+      ],
+      "blocked_without_approval": [
+        "POST /prompt generation",
+        "model downloads",
+        "private reference image upload",
+        "remote GPU start"
+      ],
+      "proof_paths": [
+        "docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md",
+        "framework/payloads/comfyui-dry-run.payload.example.json"
+      ]
+    },
+    {
+      "id": "synthetic_voice_tts",
+      "label": "Synthetic voice / TTS workflow endpoint",
+      "status": "closed_until_human_yes",
+      "env_vars": {
+        "VOICE_TTS_BASE_URL": "http://127.0.0.1:7860",
+        "VOICE_TTS_BACKEND": "local_or_omnivoice",
+        "VOICE_TTS_ENABLE_GENERATION": "false",
+        "VOICE_TTS_API_TOKEN": "[REDACTED]",
+        "VOICE_TTS_VOICE": "synthetic_host"
+      },
+      "read_only_preflight": [
+        "curl -fsS \"$VOICE_TTS_BASE_URL/health\" || true"
+      ],
+      "blocked_without_approval": [
+        "voice cloning",
+        "named-person imitation",
+        "live microphone recording",
+        "audio upload or public posting"
+      ],
+      "proof_paths": [
+        "docs/integrations/VOICE_WORKFLOW_CONTRACT.md",
+        "framework/payloads/voice-workflow.payload.example.json"
+      ]
+    },
+    {
+      "id": "github_builder_prompts",
+      "label": "GitHub issue / PR builder prompts",
+      "status": "open_for_public_safe_contribution",
+      "env_vars": {
+        "GITHUB_REPO_CANONICAL": "https://github.com/Sonic-Forage/rave-culture-field-guide",
+        "GITHUB_TOKEN": "[REDACTED]"
+      },
+      "read_only_preflight": [
+        "python3 scripts/verify.py",
+        "python3 scripts/verify_framework.py"
+      ],
+      "blocked_without_approval": [
+        "mass issue creation",
+        "automated outreach",
+        "publishing private scene details",
+        "printing or storing tokens"
+      ],
+      "proof_paths": [
+        "framework/prompts/github-community-prompts.md",
+        "CONTRIBUTING.md"
+      ]
+    }
+  ]
+}

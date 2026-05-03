@@ -36,8 +36,9 @@ framework/
 1. Copy a prompt from `framework/prompts/`.
 2. Pick tags from `framework/tags/sonic-forage-tags.json`.
 3. Use a payload from `framework/payloads/`.
-4. Keep endpoint URLs in environment variables, not git.
-5. Run:
+4. Choose an endpoint lane from `framework/workflows/endpoint-switchboard.example.json` and keep endpoint URLs in environment variables, not git.
+5. Leave all switches such as `COMFYUI_ENABLE_PROMPT=false`, `VOICE_TTS_ENABLE_GENERATION=false`, and posting/upload/payment gates closed until an awake operator says yes.
+6. Run:
 
 ```bash
 python3 scripts/verify.py

@@ -12,6 +12,7 @@ required = [
  'framework/payloads/comfyui-dry-run.payload.example.json',
  'framework/payloads/voice-workflow.payload.example.json',
  'framework/workflows/workflow-registry.json',
+ 'framework/workflows/endpoint-switchboard.example.json',
  'docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md',
  'docs/integrations/VOICE_WORKFLOW_CONTRACT.md',
  '.env.example',
@@ -26,6 +27,24 @@ registry=json.loads((ROOT/'framework/workflows/workflow-registry.json').read_tex
 if len(registry.get('workflows', [])) < 3: errors.append('workflow registry needs at least 3 workflows')
 for wf in registry.get('workflows', []):
     if not (ROOT/wf.get('payload','')).exists(): errors.append(f"workflow payload missing: {wf.get('id')}")
+switchboard=json.loads((ROOT/'framework/workflows/endpoint-switchboard.example.json').read_text())
+flags=switchboard.get('global_flags', {})
+for flag in ['requires_human_approval','starts_gpu','starts_paid_api','publishes_stream','records_audio','uploads_private_media','downloads_models','starts_training','mutates_cron']:
+    if flag not in flags: errors.append(f'endpoint switchboard missing global flag: {flag}')
+for flag, value in flags.items():
+    if flag == 'requires_human_approval':
+        if value is not True: errors.append('endpoint switchboard requires_human_approval must be true')
+    elif value is not False:
+        errors.append(f'endpoint switchboard risky flag must be false: {flag}')
+lanes=switchboard.get('lanes', [])
+if len(lanes) < 3: errors.append('endpoint switchboard needs at least 3 lanes')
+for lane in lanes:
+    if lane.get('status') not in ['closed_until_human_yes','open_for_public_safe_contribution']:
+        errors.append(f"endpoint switchboard lane has unsafe status: {lane.get('id')}")
+    env_vars=lane.get('env_vars', {})
+    if not env_vars: errors.append(f"endpoint switchboard lane missing env vars: {lane.get('id')}")
+    for proof in lane.get('proof_paths', []):
+        if not (ROOT/proof).exists(): errors.append(f"endpoint switchboard proof path missing: {proof}")
 for rel in ['docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md','docs/integrations/VOICE_WORKFLOW_CONTRACT.md']:
     text=(ROOT/rel).read_text(errors='replace').lower()
     for needle in ['requires_human_approval', 'false', 'closed']:
