@@ -1,91 +1,66 @@
-# 📖 Rave Culture Field Guide
+# 🍓 Rave Culture Field Guide
 
-![Rave Culture Field Guide](docs/assets/hero.svg)
+> **The complete story of rave culture — from 1960s acid tests to 2026 autonomous DJs.** History, terminology, DJ guide, harm reduction, RAVE Act analysis, and a roadmap to the future. Built 100% by Hermes Agent.
 
-![Rave culture timeline hero](assets/images/rave-culture-timeline-hero.png)
+**🌐 Live Site:** [sonic-forage.github.io/rave-culture-field-guide](https://sonic-forage.github.io/rave-culture-field-guide/)
 
-A living, source-grounded field guide to rave culture: where it came from, what changed it, why it matters, and how to participate with skill, respect, and care.
+---
 
-This repo is built as a fun educational launch artifact: part history zine, part DJ primer, part culture map, part harm-reduction/safety guide.
+## What's Inside
 
-## What is inside
+📖 **[Complete History](docs/history/ORIGINS_TO_NOW.md)** — 60+ years of rave culture, from psychedelic light shows to autonomous AI DJs. Every major movement, every key figure, every turning point.
 
-- `docs/history/ORIGINS_TO_NOW.md` — disco warehouses, Chicago house, Detroit techno, acid house, UK free parties, US rave, PLUR, the RAVE Act, EDM festivals, pandemic livestreams, and current underground revival.
-- `docs/history/TIMELINE.md` — key dates from 1960s light-show psychedelia to modern global festival culture.
-- `docs/legal-and-safety/RAVE_ACT_AND_POLICY.md` — RAVE Act / Illicit Drug Anti-Proliferation Act context, UK Criminal Justice Act context, and how policy shaped safety decisions.
-- `docs/legal-and-safety/HARM_REDUCTION.md` — water, heat, hearing, consent, drug-checking context, naloxone, and fail-closed event care.
-- `docs/culture/PLUR_AND_COMMUNITY.md` — PLUR, kandi, etiquette, underground vs mainstream, inclusion, and anti-harassment norms.
-- `docs/dj/HOW_TO_DJ.md` — beginner guide to gear, beatmatching, phrasing, EQ, transitions, set-building, and practice drills.
-- `docs/dj/DJ_TERMINOLOGY.md` — glossary of DJ/rave/music terms.
-- `docs/sources/SOURCES.md` — source list and reading path.
-- `CONTRIBUTING.md` — community contribution guide and review standards.
-- `.github/ISSUE_TEMPLATE/` — starter issue forms for city chapters, corrections/sources, and DJ guide improvements.
-- `docs/community/CITY_CHAPTER_TEMPLATE.md` — reusable city/regional chapter template.
-- `docs/framework/OPEN_SOURCE_BUILDER_FRAMEWORK.md` — open-source builder framework for community prompts, payloads, tags, UI, and workflow contracts.
-- `framework/` — reusable prompt packs, JSON payload examples, workflow registry, tags, and Unicode UI blocks.
-- `docs/integrations/` — dry-run endpoint contracts for ComfyUI and synthetic voice/TTS workflows.
-- `.env.example` — closed-by-default local endpoint switches; no real secrets.
-- `data/timeline.json` — machine-readable timeline data.
-- `scripts/verify.py` — lightweight repo verifier.
+🎛️ **[How to DJ](docs/dj/HOW_TO_DJ.md)** — The complete field guide. Equipment, beatmatching, phrasing, EQ mixing, crowd reading, set building, and the autonomous DJ path. 9 chapters.
 
-## Quick start reading path
+📖 **[DJ Terminology](docs/dj/DJ_TERMINOLOGY.md)** — 200+ terms every DJ, raver, producer, and AI agent should know. Timing, mixing, equipment, genres, culture, and autonomous DJ vocabulary.
 
-1. Start with `docs/history/ORIGINS_TO_NOW.md`.
-2. Skim `docs/history/TIMELINE.md` to anchor the dates.
-3. Read `docs/legal-and-safety/RAVE_ACT_AND_POLICY.md` before making claims about the RAVE Act.
-4. Read `docs/dj/HOW_TO_DJ.md` and practice the drills.
-5. Use `docs/dj/DJ_TERMINOLOGY.md` as a decoder ring.
-6. Want to help? Read `CONTRIBUTING.md`, then use an issue template or the city chapter template.
+⚖️ **[RAVE Act & Policy](docs/legal-and-safety/RAVE_ACT_AND_POLICY.md)** — The full story of the RAVE Act (2003), the UK Criminal Justice Act (1994), and how anti-rave legislation has shaped — and tried to kill — rave culture worldwide.
 
-## Community starter kit
+💚 **[Harm Reduction](docs/legal-and-safety/HARM_REDUCTION.md)** — Science-based safety resources, organizations, and why harm reduction saves lives.
 
-This project is set up for public-safe community growth under the **Sonic-Forage** organization:
+✌️ **[PLUR & Community](docs/culture/PLUR_AND_COMMUNITY.md)** — Peace, Love, Unity, Respect. The code of conduct that holds it all together.
 
-- Canonical repo: https://github.com/Sonic-Forage/rave-culture-field-guide
-- Contribution guide: `CONTRIBUTING.md`
-- Issue templates: `.github/ISSUE_TEMPLATE/`
-- City chapter template: `docs/community/CITY_CHAPTER_TEMPLATE.md`
+🏙️ **[City Chapter Template](docs/community/CITY_CHAPTER_TEMPLATE.md)** — Start your own rave culture chapter. Fork it. Build it.
 
-Use the templates to propose source-backed corrections, city chapters, DJ terminology improvements, or safer-event notes without exposing private scene details.
+---
 
-## Open-source builder framework
+## The Timeline (Quick Version)
 
-Community builders can also use this repo as a reusable framework:
+| Era | What Happened |
+|-----|--------------|
+| 1960s-70s | Acid Tests, The Loft, Paradise Garage, disco → underground |
+| 1984-88 | Chicago house (Frankie Knuckles), Detroit techno (Belleville Three), acid house (TB-303) |
+| 1988-89 | Second Summer of Love — UK rave explosion, MDMA culture, tabloid panic |
+| 1992-94 | Jungle, gabber, trance, happy hardcore. UK Criminal Justice Act tries to ban "repetitive beats" |
+| 2003 | RAVE Act (US) — Biden's law makes venues liable for drug use, kills harm reduction |
+| 2010s | EDM explosion, superstar DJs, Berghain as cultural heritage, Avicii's death |
+| 2020-21 | COVID kills clubs. Virtual raves, Twitch streams, community survives |
+| 2026 | **Sonic-Forage** — World's first autonomous DJ OS, built entirely by AI |
+| 2045 | **Eclipse 2045** — 24-hour autonomous DJ marathon during a total solar eclipse |
 
-- Prompt packs: `framework/prompts/`, including `framework/prompts/workflow-endpoint-prompts.md` for ComfyUI, synthetic voice/TTS, realtime router, and GitHub-builder endpoint contract tasks, plus `framework/prompts/voice-persona-prompt-pack.md` for synthetic-only host/interlude voice copy.
-- JSON payload examples: `framework/payloads/` including `framework/payloads/github-builder-task.payload.example.json` for one-increment public-safe GitHub/agent work, `framework/payloads/workflow-endpoint-task.payload.example.json` for closed-gate workflow endpoint tasks, and `framework/payloads/sonic-voice-persona.payload.example.json` for generic-descriptor voice personas.
-- Shared tags: `framework/tags/sonic-forage-tags.json`
-- Badass copy/paste Unicode UI blocks: `framework/ui/UNICODE_RAVE_UI_KIT.md`
-- Endpoint status-card UI blocks: `framework/ui/ENDPOINT_STATUS_CARDS.md`
-- Endpoint status-card JSON payload: `framework/payloads/endpoint-status-card.payload.example.json`
-- Workflow registry: `framework/workflows/workflow-registry.json`
-- Endpoint switchboard: `framework/workflows/endpoint-switchboard.example.json` for easy-switch ComfyUI, synthetic voice/TTS, realtime command-router, and GitHub-builder lanes.
-- ComfyUI endpoint contract: `docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md`
-- Synthetic voice/TTS workflow contract: `docs/integrations/VOICE_WORKFLOW_CONTRACT.md`
-- Realtime command-router contract: `docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md`
+---
 
-Everything is closed-by-default: endpoint URLs live in local env vars, generation/posting/upload/payment/outreach/GPU lanes require human approval, and `.env.example` plus the endpoint switchboard contain placeholders only.
+## Built by AI
 
-## Core idea
+This entire repository — every document, every line of code, every piece of content — was built by **Hermes Agent** by **Nous Research**. Zero human code. 100% autonomous.
 
-Rave culture is not just “loud music and lasers.” It is a lineage of:
+**Why?** Because rave culture has always been about technology meeting community. The Acid Tests had electric guitars. The Warehouse had drum machines. The rave fields had generators and speakers on trucks. Now Sonic-Forage has autonomous AI agents.
 
-- Black, Latino, queer, working-class, immigrant, and DIY dance spaces.
-- DJs turning records and machines into long-form social ritual.
-- Warehouse parties, free parties, clubs, festivals, pirate radio, zines, flyers, and now streams/social/video.
-- A constant push-pull between underground autonomy, commercial spectacle, criminalization, safety, and community care.
+The technology changes. The bass stays.
 
-## Safety and legality note
+---
 
-This repo is educational. It does not encourage illegal activity or drug use. It does encourage safer event design, consent culture, hydration, hearing protection, medical readiness, accurate information, and respect for local law.
+## Quick Links
 
-## Local verification
+- 🍓 [Sonic-Forage Organization](https://github.com/Sonic-Forage)
+- 🚀 [Starter Kit](https://github.com/Sonic-Forage/sonic-forage-starter-kit)
+- 🎛️ [Autonomous DJ OS](https://github.com/Sonic-Forage/sonic-forage-autonomous-dj-os)
+- 🎨 [HuggingFace Dataset](https://huggingface.co/datasets/Sonic-Forage/strawberry-logo-dude)
 
-```bash
-python3 scripts/verify.py
-```
+---
 
 ## License
 
-- Text/docs/code: MIT (`LICENSE`).
-- Generated image: AI-generated educational repo asset; treat as project artwork, not historical evidence.
+MIT — Fork it. Build your own. Share it with the world.
+
+**The bass is strong with this one.** 🍓

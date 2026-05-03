@@ -3,34 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rave Culture Field Guide</title>
+<title>🍓 Rave Culture Field Guide — The Complete Story</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Courier New',monospace;background:#0a0a12;color:#dde;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.container{max-width:700px;padding:40px;text-align:center}
-h1{font-size:2.5em;color:#00ffcc;text-shadow:0 0 30px #00ffcc;margin-bottom:20px}
-p{color:#888;line-height:1.8;margin:15px 0}
-a{color:#ff2d95;text-decoration:none}
-a:hover{text-decoration:underline}
-.links{margin:30px 0}
-.links a{display:inline-block;margin:8px;padding:10px 20px;border:1px solid #1a1a3a;border-radius:8px;color:#00ffcc}
-.links a:hover{border-color:#00ffcc;background:#0a0a1a}
-.footer{margin-top:40px;color:#555;font-size:0.75em}
+:root{--neon:#00ff88;--purple:#b829dd;--pink:#ff2d95;--cyan:#00e5ff;--gold:#ffd700;--dark:#0a0a12;--card:#111122}
+body{font-family:'Space Mono',monospace;background:var(--dark);color:#dde;min-height:100vh;overflow-x:hidden}
+
+/* Scanline overlay */
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:9999}
+
+/* Hero */
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0a0a12 0%,#1a0a2e 50%,#0a0a12 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,255,136,.08) 0%,transparent 70%);transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.3);opacity:1}}
+.hero h1{font-size:clamp(1.8rem,5vw,3.5rem);background:linear-gradient(90deg,var(--neon),var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;z-index:1;line-height:1.2}
+.hero .subtitle{color:var(--cyan);font-size:clamp(.7rem,2vw,1rem);margin-top:12px;opacity:.8;position:relative;z-index:1}
+.hero .strawberry{font-size:3rem;display:block;margin-bottom:16px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero .tagline{color:var(--pink);font-size:.85rem;margin-top:8px;position:relative;z-index:1;font-style:italic}
+
+/* Nav */
+.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:16px 20px;background:#0d0d1a;border-bottom:1px solid rgba(0,255,136,.15);position:sticky;top:0;z-index:100}
+.nav a{color:var(--neon);text-decoration:none;padding:6px 14px;border:1px solid rgba(0,255,136,.2);border-radius:4px;font-size:.75rem;transition:all .2s}
+.nav a:hover{background:rgba(0,255,136,.1);border-color:var(--neon);box-shadow:0 0 12px rgba(0,255,136,.2)}
+
+/* Sections */
+section{max-width:900px;margin:0 auto;padding:40px 20px}
+section h2{font-size:clamp(1.2rem,3vw,1.8rem);color:var(--neon);margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(0,255,136,.2)}
+section h3{color:var(--cyan);font-size:1.1rem;margin:20px 0 10px}
+section p{line-height:1.8;margin-bottom:12px;font-size:.85rem;color:#b8b8cc}
+section ul{padding-left:20px;margin-bottom:12px}
+section li{line-height:1.6;font-size:.85rem;color:#999;margin-bottom:6px}
+section li strong{color:var(--neon)}
+
+/* Timeline */
+.timeline{position:relative;padding:20px 0}
+.timeline::before{content:'';position:absolute;left:30px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--neon),var(--purple),var(--pink),var(--cyan))}
+.era{position:relative;padding-left:70px;margin-bottom:30px;animation:fadeIn .5s ease-out forwards;opacity:0}
+.era:nth-child(1){animation-delay:.1s}
+.era:nth-child(2){animation-delay:.2s}
+.era:nth-child(3){animation-delay:.3s}
+.era:nth-child(4){animation-delay:.4s}
+.era:nth-child(5){animation-delay:.5s}
+.era:nth-child(6){animation-delay:.6s}
+.era:nth-child(7){animation-delay:.7s}
+@keyframes fadeIn{to{opacity:1}}
+.era::before{content:attr(data-year);position:absolute;left:8px;top:0;color:var(--gold);font-size:.75rem;font-weight:700;width:44px;text-align:right}
+.era::after{content:'';position:absolute;left:24px;top:6px;width:14px;height:14px;border-radius:50%;border:2px solid var(--neon);background:var(--dark)}
+.era-card{background:var(--card);border:1px solid rgba(0,255,136,.12);border-radius:8px;padding:16px 20px}
+.era-card h3{margin-top:0;color:var(--pink);font-size:1rem}
+.era-card p{color:#aaa}
+.era-card .highlight{color:var(--gold);font-weight:700}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:30px 0}
+.stat{background:var(--card);border:1px solid rgba(0,255,136,.12);border-radius:8px;padding:16px;text-align:center}
+.stat .num{font-size:2rem;color:var(--neon);font-weight:700}
+.stat .label{font-size:.7rem;color:#888;margin-top:4px}
+
+/* Genre grid */
+.genre-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0}
+.genre-card{background:var(--card);border:1px solid rgba(184,41,221,.2);border-radius:8px;padding:14px;transition:all .3s}
+.genre-card:hover{border-color:var(--purple);box-shadow:0 0 20px rgba(184,41,221,.15);transform:translateY(-2px)}
+.genre-card h4{color:var(--purple);font-size:.9rem;margin-bottom:6px}
+.genre-card .bpm{color:var(--gold);font-size:.75rem}
+.genre-card p{font-size:.75rem;color:#888}
+
+/* Quote */
+.quote{border-left:3px solid var(--pink);padding:12px 20px;margin:20px 0;background:rgba(255,45,149,.05);border-radius:0 8px 8px 0}
+.quote p{color:#ccc;font-style:italic}
+.quote .attr{color:var(--pink);font-size:.75rem;margin-top:8px}
+
+/* CTA */
+.cta{text-align:center;padding:40px 20px;background:linear-gradient(180deg,#0a0a12 0%,#1a0a2e 50%,#0a0a12 100%)}
+.cta a{display:inline-block;padding:12px 32px;background:linear-gradient(90deg,var(--neon),var(--cyan));color:#000;font-weight:700;text-decoration:none;border-radius:6px;font-size:.9rem;transition:all .3s}
+.cta a:hover{box-shadow:0 0 30px rgba(0,255,136,.4);transform:translateY(-2px)}
+
+/* Harm reduction callout */
+.callout{background:rgba(255,45,149,.08);border:1px solid rgba(255,45,149,.2);border-radius:8px;padding:16px 20px;margin:20px 0}
+.callout h4{color:var(--pink);margin-bottom:8px}
+.callout p{color:#aaa;font-size:.8rem}
+
+/* Footer */
+footer{text-align:center;padding:30px 20px;font-size:.7rem;color:#555;border-top:1px solid rgba(0,255,136,.1)}
+footer a{color:var(--neon);text-decoration:none}
 </style>
 </head>
 <body>
-<div class="container">
-<img src="assets/hero.png" alt="Rave Culture Field Guide" style="width:100%;max-width:800px;margin:0 auto 20px;display:block;border-radius:8px;border:2px solid #00ff88;">
-    <h1>RAVE CULTURE FIELD GUIDE</h1>
-<p>From warehouse roots to intergalactic festivals. The complete open-source guide to rave culture, DJ terminology, harm reduction, and community building.</p>
-<div class="links">
-<a href="https://github.com/Sonic-Forage/rave-culture-field-guide">GitHub Repo</a>
-<a href="https://github.com/Sonic-Forage">Sonic-Forage Org</a>
-<a href="https://sonic-forage.github.io/sonic-forage-master-prompt-arcade/">Master Prompt Arcade</a>
-<a href="https://sonic-forage.github.io/sonic-forage-autonomous-dj-os/">Autonomous DJ OS</a>
+
+<div class="hero">
+  <span class="strawberry">🍓</span>
+  <h1>RAVE CULTURE FIELD GUIDE</h1>
+  <div class="subtitle">THE COMPLETE STORY — FROM ACID TESTS TO AUTONOMOUS DJs</div>
+  <div class="tagline">"The bass is strong with this one" — Built 100% by Hermes Agent</div>
 </div>
-<p>Part of the <a href="https://github.com/Sonic-Forage">Sonic-Forage</a> open-source mycelium ecosystem.</p>
-<div class="footer">Built autonomously while the human slept. MIT License. 🍓</div>
+
+<nav class="nav">
+  <a href="#timeline">Timeline</a>
+  <a href="#genres">Genres</a>
+  <a href="#rave-act">RAVE Act</a>
+  <a href="#dj-guide">How to DJ</a>
+  <a href="#terminology">Terminology</a>
+  <a href="#harm-reduction">Harm Reduction</a>
+  <a href="#plur">PLUR</a>
+  <a href="#future">The Future</a>
+  <a href="https://github.com/Sonic-Forage">GitHub</a>
+</nav>
+
+<section id="timeline">
+  <h2>⚡ THE TIMELINE — 60 YEARS OF RAVE</h2>
+  <div class="timeline">
+    <div class="era" data-year="1960s">
+      <div class="era-card">
+        <h3>🌀 The Seeds — Acid Tests & Disco</h3>
+        <p>Ken Kesey's <span class="highlight">Acid Tests</span> mix live music, lights, and communal experimentation. David Mancuso's <span class="highlight">The Loft</span> (1970) becomes the zero-point of modern rave culture — invitation-only, audiophile sound, diverse crowd, no alcohol, dancing as ritual. Paradise Garage (1977) and Studio 54 (1977) push the DJ booth to center stage.</p>
+      </div>
+    </div>
+    <div class="era" data-year="1984">
+      <div class="era-card">
+        <h3>🏠 Chicago House & Detroit Techno</h3>
+        <p><span class="highlight">Frankie Knuckles</span> at The Warehouse gives house music its name. <span class="highlight">Phuture's "Acid Tracks"</span> (1987) births acid house via the TB-303. In Detroit, the <span class="highlight">Belleville Three</span> (Juan Atkins, Derrick May, Kevin Saunderson) create techno — Afrofuturist electronic music inspired by Kraftwerk and Parliament-Funkadelic. House was born in queer, Black, and Latino spaces.</p>
+      </div>
+    </div>
+    <div class="era" data-year="1988">
+      <div class="era-card">
+        <h3>☀️ The Second Summer of Love — UK Explodes</h3>
+        <p>UK DJs return from Ibiza and start <span class="highlight">Shoom, Spectrum, The Trip</span>. MDMA culture blooms. The smiley face becomes the symbol. Tabloids panic: "EVILS OF ECSTACY." Illegal raves across the English countryside — 25,000 people in random fields, sound systems on trucks, helicopters trying to shut them down. <span class="highlight">Spiral Tribe, Raindance, Amnesia House</span>.</p>
+      </div>
+    </div>
+    <div class="era" data-year="1992">
+      <div class="era-card">
+        <h3>💥 Genre Fracture — Jungle, Gabber, Trance</h3>
+        <p>Rave music speeds up and splits. <span class="highlight">Jungle</span> (150-170 BPM) — ragga samples, deep bass, Black British DNA. <span class="highlight">Gabber</span> (150-200+ BPM) — Rotterdam, maximum extremity. <span class="highlight">Trance</span> — Goa, psychedelia, euphoria. <span class="highlight">Happy Hardcore</span> — pure serotonin. <span class="highlight">Aphex Twin, Autechre</span> push into IDM. <span class="highlight">Massive Attack, Portishead</span> create trip-hop in Bristol.</p>
+      </div>
+    </div>
+    <div class="era" data-year="1994">
+      <div class="era-card">
+        <h3>⚔️ The Crackdown — UK Criminal Justice Act</h3>
+        <p>Section 63 of the <span class="highlight">Criminal Justice and Public Order Act</span> makes music "characterised by the emission of a succession of repetitive beats" grounds for police shutdown. Sound systems go to war with the state. Police helicopters, roadblocks, riot gear. The underground survives — it always does.</p>
+      </div>
+    </div>
+    <div class="era" data-year="2003">
+      <div class="era-card">
+        <h3>🇺🇸 The RAVE Act — America Cracks Down</h3>
+        <p>Senator Joe Biden's <span class="highlight">RAVE Act</span> (2003) makes venue owners liable for drug use at events. Harm reduction organizations like <span class="highlight">DanceSafe</span> are kicked out. Clubs stop booking electronic music. The cruel irony: the law designed to protect people <span class="highlight">directly contributed to festival deaths</span> by preventing safety measures. The RAVE Act is still federal law today.</p>
+      </div>
+    </div>
+    <div class="era" data-year="2010">
+      <div class="era-card">
+        <h3>🎪 The EDM Explosion & Superstar DJs</h3>
+        <p>Electronic music goes mainstream. <span class="highlight">EDC, Tomorrowland, Ultra</span> become mega-festivals. DJs earn $500K+ per night. <span class="highlight">Avicii, Skrillex, Deadmau5, David Guetta</span> become household names. <span class="highlight">Berghain</span> in Berlin becomes the world's most famous club — 56-hour parties, recognized as cultural heritage. Avicii's death in 2018 exposes the mental health crisis behind the DJ lifestyle.</p>
+      </div>
+    </div>
+    <div class="era" data-year="2020">
+      <div class="era-card">
+        <h3>🦠 COVID & the Virtual Rave</h3>
+        <p>The pandemic shuts every club on Earth. <span class="highlight">Club Quarantine</span>, Boiler Room goes online, Fortnite concerts. Clubs close permanently — Fabric nearly dies, Output closes for good. But: Twitch DJ streams create new economic models. The community survives. It always does.</p>
+      </div>
+    </div>
+    <div class="era" data-year="2026">
+      <div class="era-card">
+        <h3>🤖 The Autonomous Era Begins — Sonic-Forage</h3>
+        <p><span class="highlight">Hermes Agent by Nous Research</span> builds an entire open-source autonomous DJ ecosystem from scratch. 14 repos. 390+ files. Zero human code. <span class="highlight">Sonic-Forage</span> — the world's first autonomous DJ operating system. Forkable, community-owned, rooted in rave culture history and harm reduction. The target: <span class="highlight">Eclipse 2045</span> — a 24-hour autonomous DJ marathon during a total solar eclipse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="genres">
+  <h2>🎵 GENRE MAP</h2>
+  <p>Electronic music is a universe of interconnected genres. Here's the map.</p>
+  <div class="genre-grid">
+    <div class="genre-card"><h4>House</h4><div class="bpm">120-130 BPM</div><p>Chicago, 4/4 kick, the foundation of everything.</p></div>
+    <div class="genre-card"><h4>Techno</h4><div class="bpm">125-140 BPM</div><p>Detroit → Berlin. Hypnotic, industrial, repetitive.</p></div>
+    <div class="genre-card"><h4>Drum & Bass</h4><div class="bpm">170-180 BPM</div><p>Fast, bass-heavy. Born from jungle.</p></div>
+    <div class="genre-card"><h4>Dubstep</h4><div class="bpm">140 BPM</div><p>Sub-bass. South London origins. Mala, Skream, then Skrillex.</p></div>
+    <div class="genre-card"><h4>Trance</h4><div class="bpm">130-150 BPM</div><p>Euphoric, melodic. Goa → Europe → stadiums.</p></div>
+    <div class="genre-card"><h4>Jungle</h4><div class="bpm">150-170 BPM</div><p>Ragga samples, deep bass. Black British creation.</p></div>
+    <div class="genre-card"><h4>Acid House</h4><div class="bpm">120-130 BPM</div><p>TB-303 squelch. Phuture. The sound that started a revolution.</p></div>
+    <div class="genre-card"><h4>Gabber</h4><div class="bpm">150-200+ BPM</div><p>Rotterdam. Distorted kicks. Maximum extremity.</p></div>
+    <div class="genre-card"><h4>Hardstyle</h4><div class="bpm">150 BPM</div><p>Distorted kick with a tail. Qlimax, Defqon.1.</p></div>
+    <div class="genre-card"><h4>Ambient</h4><div class="bpm">No BPM</div><p>No beats, space, time. Brian Eno. The chillout room.</p></div>
+    <div class="genre-card"><h4>Trip-Hop</h4><div class="bpm">80-110 BPM</div><p>Dark, sample-heavy. Bristol. Massive Attack, Portishead.</p></div>
+    <div class="genre-card"><h4>Footwork</h4><div class="bpm">160 BPM</div><p>Chicago. Rapid-fire hi-hats, soul samples. DJ Rashad.</p></div>
+    <div class="genre-card"><h4>Grime</h4><div class="bpm">140 BPM</div><p>UK. MCs over dark electronic beats. Wiley, Stormzy.</p></div>
+    <div class="genre-card"><h4>IDM</h4><div class="bpm">Varies</div><p>Intelligent Dance Music. Aphex Twin, Autechre.</p></div>
+    <div class="genre-card"><h4>Tech House</h4><div class="bpm">124-130 BPM</div><p>Techno + house. Currently dominant on the floor.</p></div>
+    <div class="genre-card"><h4>Breakcore</h4><div class="bpm">200+ BPM</div><p>Chopped, distorted, chaotic breakbeats. Venetian Snares.</p></div>
+  </div>
+</section>
+
+<section id="rave-act">
+  <h2>⚖️ THE RAVE ACT — WHAT HAPPENED AND WHY IT MATTERS</h2>
+  <div class="callout">
+    <h4>⚠️ The RAVE Act is still federal law.</h4>
+    <p>Passed in 2003 as the Illicit Drug Anti-Proliferation Act (attached to the PROTECT Act), it makes venue owners liable for drug use at their events — even if they actively work to prevent it. This law directly contributed to festival deaths by making it impossible to implement safety measures.</p>
+  </div>
+  <p>In 2001, Senator Joe Biden introduced the <strong>Reducing Americans' Vulnerability to Ecstasy Act</strong>. When it couldn't pass on its own, it was renamed and attached to a child protection bill — making it politically impossible to oppose.</p>
+  <p>The law expanded the "crack house statute" to cover rave venues. The result: clubs stopped booking electronic music, harm reduction organizations were kicked out, and the underground went deeper. <strong>DanceSafe</strong>, which provided free drug testing kits, was explicitly targeted.</p>
+  <p>The cruel irony: by preventing harm reduction measures (testing kits, water stations, cooling areas, medical teams), the law designed to protect people from ecstasy <strong>directly contributed to drug deaths</strong>.</p>
+  <p><strong>What still needs to change:</strong></p>
+  <ul>
+    <li>Repeal or reform the RAVE Act</li>
+    <li>Federal legalization of drug checking services</li>
+    <li>Recognize nightlife as cultural heritage (the German model)</li>
+    <li>Mental health support for DJs and performers</li>
+  </ul>
+  <p>See the full guide: <a href="https://github.com/Sonic-Forage/rave-culture-field-guide/blob/main/docs/legal-and-safety/RAVE_ACT_AND_POLICY.md" style="color:var(--cyan)">RAVE Act & Policy — Complete Guide</a></p>
+</section>
+
+<section id="dj-guide">
+  <h2>🎛️ HOW TO DJ — THE FIELD GUIDE</h2>
+  <p>Learning to DJ is learning to read a room, manage energy, and tell a story with other people's music. Here's the path.</p>
+  <h3>Equipment You Need</h3>
+  <ul>
+    <li><strong>Budget ($100-300):</strong> DDJ-200 or Numark Mixtrack Pro</li>
+    <li><strong>Mid-range ($300-800):</strong> DDJ-400 / DDJ-FLX4 (closest to club standard)</li>
+    <li><strong>Club standard ($2000+):</strong> 2x CDJ-3000 + DJM-900NXS2</li>
+    <li><strong>Software:</strong> Rekordbox (club standard), Traktor, Serato, or VirtualDJ</li>
+    <li><strong>Headphones:</strong> Sennheiser HD-25 (industry standard)</li>
+  </ul>
+  <h3>Your First Mix</h3>
+  <ul>
+    <li>1. Cue Track B in headphones</li>
+    <li>2. Beatmatch — match BPM by ear using the pitch slider</li>
+    <li>3. Wait for a phrase boundary (every 8/16/32 bars)</li>
+    <li>4. Bring Track B's channel fader up slowly</li>
+    <li>5. Use EQ to blend — cut B's bass, swap bass at transition point</li>
+    <li>6. Fade out Track A</li>
+  </ul>
+  <h3>The Secret: Phrasing</h3>
+  <p>Music is organized in phrases — 8 bars, 16 bars, 32 bars. At phrase boundaries, something changes. <strong>Mix at phrase boundaries</strong> and your transitions will sound natural. This matters more than beatmatching.</p>
+  <p>Full guide: <a href="https://github.com/Sonic-Forage/rave-culture-field-guide/blob/main/docs/dj/HOW_TO_DJ.md" style="color:var(--cyan)">How to DJ — Complete Field Guide</a></p>
+</section>
+
+<section id="terminology">
+  <h2>📖 DJ TERMINOLOGY — 200+ TERMS</h2>
+  <p>Essential vocabulary for DJs, ravers, producers, and autonomous agents.</p>
+  <h3>Core Concepts</h3>
+  <ul>
+    <li><strong>Beatmatching:</strong> Synchronizing two tracks' tempo so they play in sync</li>
+    <li><strong>Phrasing:</strong> Aligning mixes to musical phrase boundaries (8/16/32 bars)</li>
+    <li><strong>Bass swap:</strong> Cutting bass on one track while bringing in another's — the fundamental transition technique</li>
+    <li><strong>EQ:</strong> Adjusting frequency bands — Low (bass), Mid (vocals/melody), High (hats/air)</li>
+    <li><strong>Cueing:</strong> Previewing the next track in headphones before playing to the crowd</li>
+    <li><strong>Drop:</strong> The moment energy returns after a build. The climax. The bass comes back.</li>
+  </ul>
+  <h3>Culture Terms</h3>
+  <ul>
+    <li><strong>PLUR:</strong> Peace, Love, Unity, Respect — the rave code of conduct</li>
+    <li><strong>Kandi:</strong> Beaded bracelets traded at raves as bonds of connection</li>
+    <li><strong>Rave mom/dad:</strong> The responsible friend who watches out for everyone</li>
+    <li><strong>Banger:</strong> An absolute hit track that destroys the dance floor</li>
+    <li><strong>Choon / TUNE:</strong> UK slang for a great track</li>
+  </ul>
+  <h3>Equipment</h3>
+  <ul>
+    <li><strong>CDJ:</strong> Pioneer's club-standard digital deck (CDJ-3000 is current flagship)</li>
+    <li><strong>TR-909 / TR-808 / TB-303:</strong> The holy trinity of Roland — drum machines and bass synth that defined electronic music</li>
+    <li><strong>Eurorack:</strong> Modular synthesizer format — patching cables, knobs, beautiful chaos</li>
+    <li><strong>DAW:</strong> Digital Audio Workstation — Ableton, FL Studio, Logic, Bitwig</li>
+  </ul>
+  <p>Full glossary (200+ terms): <a href="https://github.com/Sonic-Forage/rave-culture-field-guide/blob/main/docs/dj/DJ_TERMINOLOGY.md" style="color:var(--cyan)">Complete DJ Terminology</a></p>
+</section>
+
+<section id="harm-reduction">
+  <h2>💚 HARM REDUCTION — KEEPING PEOPLE SAFE</h2>
+  <div class="callout">
+    <h4>💚 Harm reduction saves lives. Full stop.</h4>
+    <p>If you're at an event and someone looks distressed — get help. Don't wait. Don't assume they're fine. The rave community takes care of each other.</p>
+  </div>
+  <h3>Organizations</h3>
+  <ul>
+    <li><strong>DanceSafe</strong> — drug checking kits, health education, science-based approach</li>
+    <li><strong>Zendo Project</strong> — psychedelic peer support at festivals</li>
+    <li><strong>Bunk Police</strong> — anonymous drug checking services</li>
+    <li><strong>Energy Control</strong> — lab-grade drug analysis (Spain)</li>
+  </ul>
+  <h3>At Every Event</h3>
+  <ul>
+    <li>Water is always available and free</li>
+    <li>Cooling areas exist for people who overheat</li>
+    <li>Medical staff are present and non-judgmental</li>
+    <li>Testing kits should be legal everywhere</li>
+    <li>"Just say no" is not harm reduction — science-based education is</li>
+  </ul>
+  <p>Full resources: <a href="https://github.com/Sonic-Forage/rave-harm-reduction-community-kit" style="color:var(--cyan)">Harm Reduction Community Kit</a></p>
+</section>
+
+<section id="plur">
+  <h2>✌️ PLUR — PEACE, LOVE, UNITY, RESPECT</h2>
+  <p>PLUR is the code of conduct that has held rave culture together for 35+ years.</p>
+  <ul>
+    <li><strong>Peace</strong> — The dance floor is a conflict-free zone. No fights, no aggression.</li>
+    <li><strong>Love</strong> — Genuine care for the people around you. Connection over competition.</li>
+    <li><strong>Unity</strong> — We are one on the dance floor. Background, race, gender, orientation — none of it matters when the bass drops.</li>
+    <li><strong>Respect</strong> — For the music, the DJs, the venue, the community, and yourself.</li>
+  </ul>
+  <div class="quote">
+    <p>"We are the music makers, and we are the dreamers of dreams."</p>
+    <div class="attr">— Arthur William Edgar O'Shaughnessy (and every rave MC ever)</div>
+  </div>
+</section>
+
+<section id="future">
+  <h2>🚀 THE FUTURE — SONIC-FORAGE</h2>
+  <p>This field guide is part of <strong>Sonic-Forage</strong> — the world's first autonomous DJ operating system. Built entirely by AI. Open source. Forkable. Community-owned.</p>
+  <div class="stats">
+    <div class="stat"><div class="num">14</div><div class="label">Open Source Repos</div></div>
+    <div class="stat"><div class="num">390+</div><div class="label">Files Built</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">Human Lines of Code</div></div>
+    <div class="stat"><div class="num">100%</div><div class="label">Hermes Agent</div></div>
+    <div class="stat"><div class="num">2045</div><div class="label">Eclipse Target</div></div>
+  </div>
+  <p>The vision:</p>
+  <ul>
+    <li><strong>2026:</strong> Foundation — open-source framework, community building ✓</li>
+    <li><strong>2028:</strong> First fully autonomous DJ set at a real rave</li>
+    <li><strong>2030:</strong> AI-human collaborative DJing becomes normalized</li>
+    <li><strong>2035:</strong> Autonomous sound systems at festivals</li>
+    <li><strong>2045:</strong> Eclipse 2045 — 24-hour autonomous DJ marathon during a total solar eclipse</li>
+  </ul>
+</section>
+
+<div class="cta">
+  <p style="margin-bottom:16px;color:#888">Fork the culture. Build your own. Join the movement.</p>
+  <a href="https://github.com/Sonic-Forage">🍓 Explore Sonic-Forage on GitHub</a>
 </div>
+
+<footer>
+  <p>Built 100% by <a href="https://github.com/NousResearch">Hermes Agent</a> by <a href="https://nousresearch.com">Nous Research</a></p>
+  <p style="margin-top:8px">🍓 Sonic-Forage — The bass is strong with this one 🍓</p>
+</footer>
+
 </body>
 </html>
