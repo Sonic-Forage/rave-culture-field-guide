@@ -1,0 +1,79 @@
+{
+  "schema": "sonic_forage.workflow_endpoint_task_payload.v1",
+  "status": "workflow_endpoint_task_closed_until_human_yes",
+  "purpose": "A copyable task envelope for community builders adding one endpoint/workflow contract without calling live services.",
+  "canonical_repo": "https://github.com/Sonic-Forage/rave-culture-field-guide",
+  "requires_human_approval": true,
+  "flags": {
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "publishes_stream": false,
+    "records_audio": false,
+    "uploads_private_media": false,
+    "downloads_models": false,
+    "starts_training": false,
+    "submits_public_post": false,
+    "creates_payment_link": false,
+    "sends_outreach": false,
+    "mutates_cron": false
+  },
+  "task_template": {
+    "id": "workflow-endpoint-task-dry-run",
+    "title": "Add one Sonic-Forage endpoint workflow contract",
+    "lane": "comfyui_visual_workflows | synthetic_voice_tts | realtime_command_router | github_builder_prompts",
+    "default_state": "closed_until_human_yes",
+    "operator_question": "Do you approve opening exactly this lane for a bounded live smoke test after reviewing the endpoint, payload, media, and cost?",
+    "required_human_inputs": [
+      "approved lane id",
+      "approved endpoint env var values kept outside git",
+      "approved media/source assets if any",
+      "approved maximum spend/runtime if remote compute is involved"
+    ],
+    "env_var_names_only": [
+      "COMFYUI_BASE_URL",
+      "COMFYUI_ENABLE_PROMPT",
+      "VOICE_TTS_BASE_URL",
+      "VOICE_TTS_ENABLE_GENERATION",
+      "REALTIME_ROUTER_BASE_URL",
+      "REALTIME_ROUTER_WS_URL",
+      "REALTIME_ROUTER_ENABLE_MIC",
+      "REALTIME_ROUTER_ENABLE_SHELL"
+    ],
+    "redacted_placeholders": [
+      "[REDACTED]",
+      "[REDACTED_ENDPOINT]",
+      "[REDACTED_PRIVATE_MEDIA_PATH]"
+    ],
+    "proof_paths": [
+      "framework/prompts/workflow-endpoint-prompts.md",
+      "framework/workflows/workflow-registry.json",
+      "framework/workflows/endpoint-switchboard.example.json",
+      "docs/framework/OPEN_SOURCE_BUILDER_FRAMEWORK.md",
+      ".env.example"
+    ],
+    "verification_commands": [
+      "PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify.py",
+      "PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_framework.py",
+      "python3 -m py_compile scripts/verify.py scripts/verify_framework.py",
+      "git diff --check"
+    ],
+    "blocked_without_approval": [
+      "POST /prompt generation",
+      "voice cloning or named-person imitation",
+      "live microphone recording or shell execution",
+      "remote GPU start or model downloads",
+      "private media upload",
+      "public posting, outreach, or payment-link creation",
+      "cron mutation"
+    ],
+    "expected_dry_run_output": {
+      "ok": true,
+      "mode": "dry_run_only",
+      "prompt_id": null,
+      "files": [],
+      "warnings": [
+        "Live endpoints remain closed_until_human_yes until operator approval."
+      ]
+    }
+  }
+}

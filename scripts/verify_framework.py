@@ -9,7 +9,9 @@ required = [
  'framework/tags/sonic-forage-tags.json',
  'framework/prompts/github-community-prompts.md',
  'framework/prompts/ai-media-prompts.md',
+ 'framework/prompts/workflow-endpoint-prompts.md',
  'framework/payloads/city-chapter.payload.example.json',
+ 'framework/payloads/workflow-endpoint-task.payload.example.json',
  'framework/payloads/comfyui-dry-run.payload.example.json',
  'framework/payloads/voice-workflow.payload.example.json',
  'framework/payloads/realtime-command-router.payload.example.json',
@@ -54,6 +56,19 @@ for rel in ['docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md','docs/integrations/
     text=(ROOT/rel).read_text(errors='replace').lower()
     for needle in ['requires_human_approval', 'false', 'closed']:
         if needle not in text: errors.append(f'{rel} missing {needle}')
+workflow_task=json.loads((ROOT/'framework/payloads/workflow-endpoint-task.payload.example.json').read_text())
+if workflow_task.get('requires_human_approval') is not True:
+    errors.append('workflow endpoint task payload requires_human_approval must be true')
+for flag, value in workflow_task.get('flags', {}).items():
+    if value is not False:
+        errors.append(f'workflow endpoint task risky flag must be false: {flag}')
+for proof in workflow_task.get('task_template', {}).get('proof_paths', []):
+    if not (ROOT/proof).exists(): errors.append(f'workflow endpoint task proof path missing: {proof}')
+for needle in ['COMFYUI_BASE_URL','VOICE_TTS_BASE_URL','REALTIME_ROUTER_BASE_URL','closed_until_human_yes','[REDACTED]']:
+    if needle not in json.dumps(workflow_task): errors.append(f'workflow endpoint task missing {needle}')
+workflow_prompts=(ROOT/'framework/prompts/workflow-endpoint-prompts.md').read_text(errors='replace')
+for needle in ['workflow_endpoint_prompts_closed_until_human_yes','COMFYUI_ENABLE_PROMPT=false','VOICE_TTS_ENABLE_GENERATION=false','REALTIME_ROUTER_ENABLE_SHELL=false','requires_human_approval=true']:
+    if needle not in workflow_prompts: errors.append(f'workflow endpoint prompt pack missing {needle}')
 status_cards=json.loads((ROOT/'framework/payloads/endpoint-status-card.payload.example.json').read_text())
 if status_cards.get('requires_human_approval') is not True:
     errors.append('endpoint status-card payload requires_human_approval must be true')

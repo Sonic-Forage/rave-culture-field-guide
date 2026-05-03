@@ -76,6 +76,20 @@
         "proof-card"
       ],
       "approval": "closed_until_human_yes"
+    },
+    {
+      "id": "workflow-endpoint-task-dry-run",
+      "type": "workflow_endpoint_contract",
+      "backend": "local_issue_or_agent_fixture",
+      "payload": "framework/payloads/workflow-endpoint-task.payload.example.json",
+      "tags": [
+        "workflow-contract",
+        "endpoint-swappable",
+        "github-builder",
+        "closed-gate",
+        "unicode-ui"
+      ],
+      "approval": "closed_until_human_yes"
     }
   ]
 }
