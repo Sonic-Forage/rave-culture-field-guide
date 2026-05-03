@@ -1,0 +1,56 @@
+{
+  "schema": "sonic_forage.endpoint_status_card_payload.v1",
+  "status": "dry_run_endpoint_cards_closed_until_human_yes",
+  "purpose": "Display-only endpoint status cards for README, issue, terminal, and proof-deck surfaces. These cards never open endpoints by themselves.",
+  "requires_human_approval": true,
+  "flags": {
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "publishes_stream": false,
+    "records_audio": false,
+    "uploads_private_media": false,
+    "downloads_models": false,
+    "starts_training": false,
+    "mutates_cron": false,
+    "prints_secrets": false,
+    "uses_real_endpoint_url": false
+  },
+  "cards": [
+    {
+      "id": "comfyui_visual_lane_card",
+      "lane": "comfyui_visual_workflows",
+      "status": "closed_until_human_yes",
+      "env_var_names": ["COMFYUI_BASE_URL", "COMFYUI_ENABLE_PROMPT", "COMFYUI_WORKFLOW_REGISTRY"],
+      "proof_paths": ["docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md", "framework/payloads/comfyui-dry-run.payload.example.json"],
+      "human_approval_question": "Do you approve exactly one ComfyUI generation lane, with the selected workflow ID, prompt text, model/download plan, and output path reviewed first?",
+      "blocked_without_approval": ["POST /prompt generation", "remote GPU start", "model download", "private reference image upload"]
+    },
+    {
+      "id": "synthetic_voice_lane_card",
+      "lane": "synthetic_voice_tts",
+      "status": "closed_until_human_yes",
+      "env_var_names": ["VOICE_TTS_BASE_URL", "VOICE_TTS_BACKEND", "VOICE_TTS_ENABLE_GENERATION"],
+      "proof_paths": ["docs/integrations/VOICE_WORKFLOW_CONTRACT.md", "framework/payloads/voice-workflow.payload.example.json"],
+      "human_approval_question": "Do you approve one synthetic TTS generation using only synthetic descriptors, no named-person imitation, and no live microphone capture?",
+      "blocked_without_approval": ["voice cloning", "named-person imitation", "live microphone recording", "audio upload or public posting"]
+    },
+    {
+      "id": "realtime_command_router_card",
+      "lane": "realtime_command_router",
+      "status": "closed_until_human_yes",
+      "env_var_names": ["REALTIME_ROUTER_BASE_URL", "REALTIME_ROUTER_ENABLE_MIC", "REALTIME_ROUTER_ENABLE_WEBSOCKET", "REALTIME_ROUTER_ENABLE_OSC", "REALTIME_ROUTER_ENABLE_SHELL"],
+      "proof_paths": ["docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md", "framework/payloads/realtime-command-router.payload.example.json"],
+      "human_approval_question": "Do you approve one local realtime adapter lane, with microphone, WebSocket, OSC, shell, posting, and cron switches still explicitly reviewed?",
+      "blocked_without_approval": ["voice-to-shell execution", "outreach", "public posting", "wallet/key actions", "cron mutation"]
+    },
+    {
+      "id": "github_builder_task_card",
+      "lane": "github_builder_prompts",
+      "status": "open_for_public_safe_contribution_after_review",
+      "env_var_names": ["GITHUB_REPO_CANONICAL"],
+      "proof_paths": ["framework/payloads/github-builder-task.payload.example.json", "framework/prompts/github-community-prompts.md", "CONTRIBUTING.md"],
+      "human_approval_question": "Do you approve this exact GitHub contribution scope and confirm it does not disclose private scene details, credentials, contacts, payment links, or active underground locations?",
+      "blocked_without_approval": ["mass issue creation", "automated outreach", "secret printing", "private scene details"]
+    }
+  ]
+}

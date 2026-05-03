@@ -54,6 +54,8 @@ Community builders can also use this repo as a reusable framework:
 - JSON payload examples: `framework/payloads/` including `framework/payloads/github-builder-task.payload.example.json` for one-increment public-safe GitHub/agent work.
 - Shared tags: `framework/tags/sonic-forage-tags.json`
 - Badass copy/paste Unicode UI blocks: `framework/ui/UNICODE_RAVE_UI_KIT.md`
+- Endpoint status-card UI blocks: `framework/ui/ENDPOINT_STATUS_CARDS.md`
+- Endpoint status-card JSON payload: `framework/payloads/endpoint-status-card.payload.example.json`
 - Workflow registry: `framework/workflows/workflow-registry.json`
 - Endpoint switchboard: `framework/workflows/endpoint-switchboard.example.json` for easy-switch ComfyUI, synthetic voice/TTS, realtime command-router, and GitHub-builder lanes.
 - ComfyUI endpoint contract: `docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md`

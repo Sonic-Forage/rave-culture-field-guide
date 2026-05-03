@@ -5,6 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 required = [
  'docs/framework/OPEN_SOURCE_BUILDER_FRAMEWORK.md',
  'framework/ui/UNICODE_RAVE_UI_KIT.md',
+ 'framework/ui/ENDPOINT_STATUS_CARDS.md',
  'framework/tags/sonic-forage-tags.json',
  'framework/prompts/github-community-prompts.md',
  'framework/prompts/ai-media-prompts.md',
@@ -13,6 +14,7 @@ required = [
  'framework/payloads/voice-workflow.payload.example.json',
  'framework/payloads/realtime-command-router.payload.example.json',
  'framework/payloads/github-builder-task.payload.example.json',
+ 'framework/payloads/endpoint-status-card.payload.example.json',
  'framework/workflows/workflow-registry.json',
  'framework/workflows/endpoint-switchboard.example.json',
  'docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md',
@@ -52,6 +54,28 @@ for rel in ['docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md','docs/integrations/
     text=(ROOT/rel).read_text(errors='replace').lower()
     for needle in ['requires_human_approval', 'false', 'closed']:
         if needle not in text: errors.append(f'{rel} missing {needle}')
+status_cards=json.loads((ROOT/'framework/payloads/endpoint-status-card.payload.example.json').read_text())
+if status_cards.get('requires_human_approval') is not True:
+    errors.append('endpoint status-card payload requires_human_approval must be true')
+for flag, value in status_cards.get('flags', {}).items():
+    if value is not False:
+        errors.append(f'endpoint status-card risky flag must be false: {flag}')
+if len(status_cards.get('cards', [])) < 4:
+    errors.append('endpoint status-card payload needs at least 4 cards')
+for card in status_cards.get('cards', []):
+    if 'closed_until_human_yes' not in card.get('status', '') and 'review' not in card.get('status', ''):
+        errors.append(f"endpoint status-card unsafe status: {card.get('id')}")
+    if not card.get('env_var_names'):
+        errors.append(f"endpoint status-card missing env vars: {card.get('id')}")
+    if not card.get('human_approval_question'):
+        errors.append(f"endpoint status-card missing approval question: {card.get('id')}")
+    if len(card.get('blocked_without_approval', [])) < 3:
+        errors.append(f"endpoint status-card blocked list too short: {card.get('id')}")
+    for proof in card.get('proof_paths', []):
+        if not (ROOT/proof).exists(): errors.append(f"endpoint status-card proof path missing: {proof}")
+ui_cards=(ROOT/'framework/ui/ENDPOINT_STATUS_CARDS.md').read_text(errors='replace')
+for needle in ['dry_run_endpoint_cards_closed_until_human_yes','COMFYUI_BASE_URL','VOICE_TTS_BASE_URL','REALTIME_ROUTER_BASE_URL','requires_human_approval: true']:
+    if needle not in ui_cards: errors.append(f'endpoint status-card UI missing {needle}')
 env=(ROOT/'.env.example').read_text(errors='replace')
 for marker in ['COMFYUI_ENABLE_PROMPT=false','VOICE_TTS_ENABLE_GENERATION=false','REALTIME_ROUTER_ENABLE_SHELL=false','PUBLIC_POSTING_APPROVED=false']:
     if marker not in env: errors.append(f'.env.example missing {marker}')

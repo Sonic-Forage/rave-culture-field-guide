@@ -63,6 +63,19 @@
         "closed-gate"
       ],
       "approval": "closed_until_human_yes_for_external_actions"
+    },
+    {
+      "id": "endpoint-status-card-display",
+      "type": "ui_contract",
+      "backend": "static_unicode_or_manifest_renderer",
+      "payload": "framework/payloads/endpoint-status-card.payload.example.json",
+      "tags": [
+        "unicode-ui",
+        "endpoint-swappable",
+        "closed-gate",
+        "proof-card"
+      ],
+      "approval": "closed_until_human_yes"
     }
   ]
 }
