@@ -1,0 +1,28 @@
+# Timeline: Rave Culture Key Dates
+
+- **1965–1966:** Acid Tests combine psychedelia, light shows, participatory crowds, and music immersion.
+- **Late 1960s–1970s:** Northern Soul all-nighters develop DJ-driven rare-record dance culture in the UK.
+- **1977:** Paradise Garage opens in New York; Larry Levan’s residency becomes a template for modern club culture.
+- **1977:** The Warehouse in Chicago opens; Frankie Knuckles helps shape what becomes house music.
+- **1979:** Disco Demolition Night marks a violent disco backlash; dance music moves further underground.
+- **1983:** Cybotron’s “Clear” becomes an early Detroit techno landmark.
+- **1987:** Phuture’s “Acid Tracks” helps define acid house.
+- **1987:** UK DJs experience Ibiza’s Balearic/MDMA club culture and bring the energy home.
+- **1988:** UK “Second Summer of Love”; Shoom, Spectrum, Future, The Trip, and The Haçienda become key names.
+- **1988–1989:** M25 orbital rave parties grow through secret-location networks.
+- **1989:** Love Parade begins in Berlin as an electronic music demonstration.
+- **1989:** Frankie Bones plays a massive UK Energy rave and brings rave energy back to New York.
+- **1990:** “Peace Love Unity” begins evolving toward PLUR in US rave culture.
+- **1991:** First Storm Rave in Brooklyn.
+- **1992:** Castlemorton Common free festival becomes a defining UK flashpoint.
+- **1994:** UK Criminal Justice and Public Order Act targets unauthorized raves and “repetitive beats.”
+- **1997:** First Electric Daisy Carnival.
+- **1998:** DanceSafe is founded.
+- **1999:** First Ultra Music Festival; Love Parade reaches massive scale.
+- **2003:** US RAVE Act passes as the Illicit Drug Anti-Proliferation Act.
+- **2005:** Tomorrowland launches in Belgium.
+- **2010:** Love Parade crowd crush in Duisburg kills 21; original parade ends.
+- **2011–2014:** “EDM” becomes a dominant US commercial category; Las Vegas DJ residencies and festival mega-stages boom.
+- **2020–2021:** COVID shutdowns accelerate livestream and virtual rave formats.
+- **2022:** Rave The Planet revives the Berlin parade/demonstration lineage.
+- **2020s:** Hard techno/hard dance revival, no-phone underground parties, harm-reduction urgency, global livestreamed scene discovery, and renewed debate over commercialization.
