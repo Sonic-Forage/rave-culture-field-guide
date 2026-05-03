@@ -50,6 +50,19 @@
         "endpoint-swappable"
       ],
       "approval": "closed_until_human_yes"
+    },
+    {
+      "id": "github-builder-job-dry-run",
+      "type": "github_builder_payload",
+      "backend": "github_issue_or_local_agent_fixture",
+      "payload": "framework/payloads/github-builder-task.payload.example.json",
+      "tags": [
+        "github-builder",
+        "open-source-framework",
+        "public-safe",
+        "closed-gate"
+      ],
+      "approval": "closed_until_human_yes_for_external_actions"
     }
   ]
 }

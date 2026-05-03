@@ -51,7 +51,7 @@ Use the templates to propose source-backed corrections, city chapters, DJ termin
 Community builders can also use this repo as a reusable framework:
 
 - Prompt packs: `framework/prompts/`
-- JSON payload examples: `framework/payloads/`
+- JSON payload examples: `framework/payloads/` including `framework/payloads/github-builder-task.payload.example.json` for one-increment public-safe GitHub/agent work.
 - Shared tags: `framework/tags/sonic-forage-tags.json`
 - Badass copy/paste Unicode UI blocks: `framework/ui/UNICODE_RAVE_UI_KIT.md`
 - Workflow registry: `framework/workflows/workflow-registry.json`

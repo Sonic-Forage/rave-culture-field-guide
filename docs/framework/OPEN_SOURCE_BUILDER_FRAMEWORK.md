@@ -7,7 +7,7 @@ This project is not only a rave-culture guide. It is also an open-source framewo
 ## What builders can extend
 
 - **Prompts** — reusable GitHub issue/PR/research/media prompts.
-- **Payloads** — structured JSON payloads for agents, UI cards, ComfyUI dry-runs, voice personas, and city chapters.
+- **Payloads** — structured JSON payloads for agents, UI cards, ComfyUI dry-runs, voice personas, GitHub builder tasks, and city chapters.
 - **Tags** — consistent labels for genres, city chapters, safety gates, DJ terms, workflow lanes, and review status.
 - **Unicode UI kit** — badass terminal/readme/dashboard blocks that feel rave-native but still copy/paste cleanly.
 - **Workflow contracts** — easy-switch endpoint templates for ComfyUI, voice/TTS, and future AI media backends.
@@ -38,9 +38,10 @@ framework/
 2. Pick tags from `framework/tags/sonic-forage-tags.json`.
 3. Use a payload from `framework/payloads/`.
 4. Choose an endpoint lane from `framework/workflows/endpoint-switchboard.example.json` and keep endpoint URLs in environment variables, not git.
-5. For realtime prototypes, start with `framework/payloads/realtime-command-router.payload.example.json` plus `docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md`; keep microphone, WebSocket, OSC, and shell switches disabled until a human approves exactly one lane.
-6. Leave all switches such as `COMFYUI_ENABLE_PROMPT=false`, `VOICE_TTS_ENABLE_GENERATION=false`, `REALTIME_ROUTER_ENABLE_SHELL=false`, and posting/upload/payment gates closed until an awake operator says yes.
-7. Run:
+5. For GitHub/community-agent work, start with `framework/payloads/github-builder-task.payload.example.json`; it constrains agents to one public-safe contribution and keeps posting/outreach/payment/GPU/media gates closed.
+6. For realtime prototypes, start with `framework/payloads/realtime-command-router.payload.example.json` plus `docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md`; keep microphone, WebSocket, OSC, and shell switches disabled until a human approves exactly one lane.
+7. Leave all switches such as `COMFYUI_ENABLE_PROMPT=false`, `VOICE_TTS_ENABLE_GENERATION=false`, `REALTIME_ROUTER_ENABLE_SHELL=false`, and posting/upload/payment gates closed until an awake operator says yes.
+8. Run:
 
 ```bash
 python3 scripts/verify.py

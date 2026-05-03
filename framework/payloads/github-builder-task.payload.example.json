@@ -1,0 +1,69 @@
+{
+  "schema": "sonic_forage.github_builder_task.v1",
+  "status": "public_safe_draft_closed_until_human_yes_for_external_actions",
+  "purpose": "Reusable payload for turning a Sonic-Forage GitHub issue, PR review, or agent task into a bounded open-source framework contribution.",
+  "canonical_repo": "https://github.com/Sonic-Forage/rave-culture-field-guide",
+  "task_envelope": {
+    "task_id": "builder-job-0001",
+    "source": "github_issue_or_local_agent_fixture",
+    "requested_change": "Add or improve one public-safe prompt, payload, tag dictionary, UI block, workflow contract, or source-backed guide section.",
+    "allowed_paths": [
+      "docs/",
+      "framework/",
+      ".github/ISSUE_TEMPLATE/",
+      "scripts/verify.py",
+      "scripts/verify_framework.py",
+      "README.md",
+      "CONTRIBUTING.md"
+    ],
+    "required_tags": [
+      "public-safe",
+      "open-source-framework",
+      "source-backed-or-dry-run",
+      "closed-gate"
+    ]
+  },
+  "closed_flags": {
+    "requires_human_approval": true,
+    "publishes_stream": false,
+    "sends_outreach": false,
+    "creates_payment_link": false,
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "uploads_private_media": false,
+    "downloads_models": false,
+    "starts_training": false,
+    "submits_public_post": false,
+    "mutates_cron": false,
+    "prints_or_commits_secrets": false
+  },
+  "blocked_without_approval": [
+    "opening or editing issues at scale",
+    "posting release/social/newsletter copy",
+    "sending DMs or email outreach",
+    "creating payment links",
+    "starting GPU/media generation jobs",
+    "uploading private media or private datasets",
+    "changing cron schedules",
+    "printing real endpoint URLs or tokens"
+  ],
+  "operator_inputs_required_before_external_action": [
+    "exact issue or PR URL",
+    "one approved external action",
+    "reviewed final copy or patch",
+    "confirmation that no private scene details or secrets are included"
+  ],
+  "dry_run_agent_prompt": "You are improving the Sonic-Forage open-source builder framework. Make exactly one public-safe repo-local contribution, keep all endpoint URLs as env var placeholders, leave external launch gates closed, run scripts/verify.py and scripts/verify_framework.py, and map every claim to a repo path or public URL.",
+  "verification_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_framework.py",
+    "python3 -m py_compile scripts/verify.py scripts/verify_framework.py",
+    "git diff --check"
+  ],
+  "expected_success_highlights": [
+    "framework JSON files parse",
+    "endpoint switchboard risky flags remain false",
+    "GitHub builder payload contains closed flags and blocked action list",
+    "no secret-looking markers in framework docs or payload examples"
+  ]
+}

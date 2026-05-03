@@ -89,6 +89,7 @@
       ],
       "proof_paths": [
         "framework/prompts/github-community-prompts.md",
+        "framework/payloads/github-builder-task.payload.example.json",
         "CONTRIBUTING.md"
       ]
     },
