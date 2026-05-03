@@ -1,7 +1,7 @@
 {
   "schema": "sonic_forage.tags.v1",
   "status": "public_safe_open_source",
-  "updated_utc": "2026-05-03T08:57:04Z",
+  "updated_utc": "2026-05-03T09:16:00Z",
   "categories": {
     "community": [
       "city-chapter",
@@ -48,7 +48,11 @@
       "unicode-ui",
       "endpoint-swappable",
       "voice-ready",
-      "comfyui-ready"
+      "comfyui-ready",
+      "realtime-router",
+      "voice-command",
+      "osc-ready",
+      "websocket-ready"
     ],
     "gates": [
       "closed_until_human_yes",
@@ -70,6 +74,9 @@
     "payload",
     "workflow-contract",
     "unicode-ui",
-    "closed-gate"
+    "closed-gate",
+    "realtime-router",
+    "voice-command",
+    "endpoint-swappable"
   ]
 }

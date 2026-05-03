@@ -11,10 +11,12 @@ required = [
  'framework/payloads/city-chapter.payload.example.json',
  'framework/payloads/comfyui-dry-run.payload.example.json',
  'framework/payloads/voice-workflow.payload.example.json',
+ 'framework/payloads/realtime-command-router.payload.example.json',
  'framework/workflows/workflow-registry.json',
  'framework/workflows/endpoint-switchboard.example.json',
  'docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md',
  'docs/integrations/VOICE_WORKFLOW_CONTRACT.md',
+ 'docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md',
  '.env.example',
 ]
 errors=[]
@@ -45,12 +47,12 @@ for lane in lanes:
     if not env_vars: errors.append(f"endpoint switchboard lane missing env vars: {lane.get('id')}")
     for proof in lane.get('proof_paths', []):
         if not (ROOT/proof).exists(): errors.append(f"endpoint switchboard proof path missing: {proof}")
-for rel in ['docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md','docs/integrations/VOICE_WORKFLOW_CONTRACT.md']:
+for rel in ['docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md','docs/integrations/VOICE_WORKFLOW_CONTRACT.md','docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md']:
     text=(ROOT/rel).read_text(errors='replace').lower()
     for needle in ['requires_human_approval', 'false', 'closed']:
         if needle not in text: errors.append(f'{rel} missing {needle}')
 env=(ROOT/'.env.example').read_text(errors='replace')
-for marker in ['COMFYUI_ENABLE_PROMPT=false','VOICE_TTS_ENABLE_GENERATION=false','PUBLIC_POSTING_APPROVED=false']:
+for marker in ['COMFYUI_ENABLE_PROMPT=false','VOICE_TTS_ENABLE_GENERATION=false','REALTIME_ROUTER_ENABLE_SHELL=false','PUBLIC_POSTING_APPROVED=false']:
     if marker not in env: errors.append(f'.env.example missing {marker}')
 all_text='\n'.join((ROOT/rel).read_text(errors='replace') for rel in required if not rel.endswith('.json'))
 if re.search(r'(ghp_|github_pat_|sk-[A-Za-z0-9]|hf_[A-Za-z0-9]|BEGIN [A-Z ]*PRIVATE KEY)', all_text):

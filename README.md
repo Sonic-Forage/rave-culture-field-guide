@@ -55,9 +55,10 @@ Community builders can also use this repo as a reusable framework:
 - Shared tags: `framework/tags/sonic-forage-tags.json`
 - Badass copy/paste Unicode UI blocks: `framework/ui/UNICODE_RAVE_UI_KIT.md`
 - Workflow registry: `framework/workflows/workflow-registry.json`
-- Endpoint switchboard: `framework/workflows/endpoint-switchboard.example.json` for easy-switch ComfyUI, synthetic voice/TTS, and GitHub-builder lanes.
+- Endpoint switchboard: `framework/workflows/endpoint-switchboard.example.json` for easy-switch ComfyUI, synthetic voice/TTS, realtime command-router, and GitHub-builder lanes.
 - ComfyUI endpoint contract: `docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md`
 - Synthetic voice/TTS workflow contract: `docs/integrations/VOICE_WORKFLOW_CONTRACT.md`
+- Realtime command-router contract: `docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md`
 
 Everything is closed-by-default: endpoint URLs live in local env vars, generation/posting/upload/payment/outreach/GPU lanes require human approval, and `.env.example` plus the endpoint switchboard contain placeholders only.
 

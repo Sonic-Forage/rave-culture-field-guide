@@ -1,0 +1,54 @@
+{
+  "schema": "sonic_forage.realtime_command_router_payload.v1",
+  "status": "dry_run_realtime_router_closed_until_human_yes",
+  "purpose": "Example envelope for routing voice, OSC, dashboard, or issue-form commands into safe Sonic-Forage actions without shell execution or live provider access.",
+  "source": "local_fixture_or_dashboard_button",
+  "utterance": "show the verified launch proof card",
+  "timestamp_utc": "2026-05-03T00:00:00Z",
+  "parsed_intent": "dashboard.status",
+  "confidence": 0.82,
+  "args": {
+    "target_panel": "launch-proof-card",
+    "repo": "Sonic-Forage/rave-culture-field-guide",
+    "public_url": "https://github.com/Sonic-Forage/rave-culture-field-guide"
+  },
+  "safety_decision": {
+    "allowed": true,
+    "requires_human_approval": true,
+    "route": "local_dashboard_event_only",
+    "blocked_actions": [
+      "shell execution",
+      "public posting",
+      "payment link creation",
+      "outreach",
+      "GPU start",
+      "live microphone recording",
+      "private media upload",
+      "secret printing"
+    ]
+  },
+  "risky_flags": {
+    "starts_gpu": false,
+    "starts_paid_api": false,
+    "publishes_stream": false,
+    "records_audio": false,
+    "uploads_private_media": false,
+    "downloads_models": false,
+    "starts_training": false,
+    "voice_to_shell": false,
+    "mutates_cron": false
+  },
+  "normalized_output_example": {
+    "ok": true,
+    "event_type": "dashboard.status",
+    "transport": "local_json_fixture",
+    "payload": {
+      "panel": "launch-proof-card",
+      "message": "Open source framework verified; external launch gates remain closed."
+    },
+    "ledger_path": "logs/realtime-command-router-ledger.jsonl",
+    "warnings": [
+      "Dry-run example only; no microphone, OSC hardware, WebSocket provider, or shell bridge is started."
+    ]
+  }
+}

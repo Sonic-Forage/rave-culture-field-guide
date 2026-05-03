@@ -37,6 +37,19 @@
         "sources"
       ],
       "approval": "open_for_public_safe_contribution"
+    },
+    {
+      "id": "realtime-command-router-dry-run",
+      "type": "realtime_command_router",
+      "backend": "local_fixture_websocket_or_osc",
+      "payload": "framework/payloads/realtime-command-router.payload.example.json",
+      "tags": [
+        "realtime-router",
+        "voice-command",
+        "closed-gate",
+        "endpoint-swappable"
+      ],
+      "approval": "closed_until_human_yes"
     }
   ]
 }

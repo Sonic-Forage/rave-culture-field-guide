@@ -91,6 +91,37 @@
         "framework/prompts/github-community-prompts.md",
         "CONTRIBUTING.md"
       ]
+    },
+    {
+      "id": "realtime_command_router",
+      "label": "Realtime voice / OSC / WebSocket command router",
+      "status": "closed_until_human_yes",
+      "env_vars": {
+        "REALTIME_ROUTER_ENABLE_MIC": "false",
+        "REALTIME_ROUTER_ENABLE_WEBSOCKET": "false",
+        "REALTIME_ROUTER_ENABLE_OSC": "false",
+        "REALTIME_ROUTER_ENABLE_SHELL": "false",
+        "REALTIME_ROUTER_BASE_URL": "http://127.0.0.1:8787",
+        "REALTIME_ROUTER_WS_URL": "ws://127.0.0.1:8787/ws/audio",
+        "REALTIME_ROUTER_API_TOKEN": "[REDACTED]"
+      },
+      "read_only_preflight": [
+        "PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify.py",
+        "PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_framework.py",
+        "python3 -m json.tool framework/payloads/realtime-command-router.payload.example.json >/tmp/sonic_forage_realtime_payload.json"
+      ],
+      "blocked_without_approval": [
+        "voice-to-shell execution",
+        "live microphone recording",
+        "OSC/WebSocket provider connect",
+        "public posting or outreach",
+        "secret printing",
+        "cron mutation"
+      ],
+      "proof_paths": [
+        "docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md",
+        "framework/payloads/realtime-command-router.payload.example.json"
+      ]
     }
   ]
 }

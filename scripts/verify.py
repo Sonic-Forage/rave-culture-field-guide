@@ -30,10 +30,12 @@ required = [
     'framework/payloads/city-chapter.payload.example.json',
     'framework/payloads/comfyui-dry-run.payload.example.json',
     'framework/payloads/voice-workflow.payload.example.json',
+    'framework/payloads/realtime-command-router.payload.example.json',
     'framework/workflows/workflow-registry.json',
     'framework/workflows/endpoint-switchboard.example.json',
     'docs/integrations/COMFYUI_ENDPOINT_CONTRACT.md',
     'docs/integrations/VOICE_WORKFLOW_CONTRACT.md',
+    'docs/integrations/REALTIME_COMMAND_ROUTER_CONTRACT.md',
     '.env.example',
 ]
 errors = []
